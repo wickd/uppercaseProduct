@@ -60,13 +60,13 @@ let nodemonjs = function () {
  */
 let sassLoad = function () {
 
-    let modules = directoriesHelper.getDirectories('./app/frontend');
-    for (var i = 0; i < modules.length; i++) {
-        gulp.src(`./app/frontend/${modules[i]}/views/sass/*.scss`)
+    // let modules = directoriesHelper.getDirectories('./public/assets');
+    // for (var i = 0; i < modules.length; i++) {
+        gulp.src(`./public/assets/sass/*.scss`)
             .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
             .pipe(cleanCss())
-            .pipe(gulp.dest(`./public/frontend/${modules[i]}/css`));
-    }
+            .pipe(gulp.dest(`./public/assets/css`));
+    // }
 
     // return gulp.src('./app/frontend/common/sass/*.scss')
     //     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
@@ -76,11 +76,11 @@ let sassLoad = function () {
 };
 
 let sassWatch = function () {
-    let modules = directoriesHelper.getDirectories('./app/frontend');
-    for (var i = 0; i < modules.length; i++) {
-        gulp.watch(`./app/frontend/${modules[i]}/views/sass/*.scss`, ['sass']);
+    // let modules = directoriesHelper.getDirectories('./app/frontend');
+    // for (var i = 0; i < modules.length; i++) {
+        gulp.watch(`./public/assets/sass/*.scss`, ['sass']);
 
-    }
+    // }
 
     // gulp.watch('./app/frontend/common/sass/*.scss', ['sass']);
 };
@@ -90,12 +90,12 @@ let sassWatch = function () {
  */
 
 let minImg = function () {
-    let modules = directoriesHelper.getDirectories('./app/frontend');
-    for (let i = 0; i < modules.length; i++) {
-        gulp.src(`./app/frontend/${modules[i]}/views/img/**/*`)
+    // let modules = directoriesHelper.getDirectories('./app/frontend');
+    // for (let i = 0; i < modules.length; i++) {
+        gulp.src(`./public/assets/img/**/*`)
             .pipe(imagemin())
-            .pipe(gulp.dest(`./public/frontend/${modules[i]}/img`));
-    }
+            .pipe(gulp.dest(`./public/assets/img`));
+    // }
     // gulp.src('./app/frontend/common/img/**/*')
     //     .pipe(imagemin())
     //     .pipe(gulp.dest('./public/app/common/img/'))
