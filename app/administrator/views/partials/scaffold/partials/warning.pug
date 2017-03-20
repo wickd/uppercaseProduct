@@ -1,0 +1,6 @@
+.alert.alert-warning.alert-dismissable
+    button.close(aria-hidden="true", data-dismiss="alert", type="button") ×
+
+    p !{session.getWarningMessage()}
+    // Todo: This stuff is SUPER hardcoded. Please don't be a **** and fix me.
+    - session.session.warning = {}

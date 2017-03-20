@@ -1,0 +1,8 @@
+{
+  "dashboard_path": "./app/dashboard",
+  "crud_path": "./app/dashboard/cruds/",
+  "auth_redirect": "/dashboard/pages/menus",
+  "rows_per_page": 15,
+  "get_administrator_path": "./app/dashboard/administrator/",
+  "gmap_api_key": "AIzaSyAORpBitSQJ9qj6QuRMVISWDoq8ebbfGU8"
+}

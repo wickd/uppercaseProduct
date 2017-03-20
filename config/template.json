@@ -1,0 +1,4 @@
+{
+  "view_engine" : "pug",
+  "path" : "/resources/views"
+}

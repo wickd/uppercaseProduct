@@ -1,0 +1,7 @@
+if(nav_item != undefined)
+    li(class=navigatable.isActive(nav_item.page) ? 'active' : '')
+        - var icon = [ 'fa', nav_item.icon ];
+        a(href=nav_item.link) #[i(class=icon)] #[span(class=nav-label) #{nav_item.title}]
+
+            // Add a label for item
+                span.label.label-primary.pull-right NEW

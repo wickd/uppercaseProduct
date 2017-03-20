@@ -1,0 +1,10 @@
+select(name=name)&attributes(element.attributes)
+    if(default_val)
+        option(value=default_val[element.getDefaultKey()]) !{default_val[element.getDefaultValue()]}
+    else
+        option(value="") Select ..
+    each option, id in options
+        if(element.getValue() == id)
+            option(value=id, id=name + "_" + id, selected) !{h.is_string(option) ? h.uc_first(option) : option}
+        else
+            option(value=id, id=name + "_" + id) !{h.is_string(option) ? h.uc_first(option) : option}

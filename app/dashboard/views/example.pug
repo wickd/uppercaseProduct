@@ -1,0 +1,35 @@
+doctype html
+
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        block title
+            title PGI | Dashboard
+
+        include ./partials/assets/css.pug
+
+        script(src='/dashboard/assets/js/jquery-2.1.1.js', type='text/javascript')
+        script(src='/dashboard/assets/js/bootstrap.min.js', type='text/javascript')
+        block styles
+
+    body.pace-done
+        #wrapper
+            include partials/navigation/sidebar/main
+
+            #page-wrapper.gray-bg
+                include ./partials/scaffold/header
+
+                block content
+
+                include ./partials/scaffold/footer
+
+    include ./partials/assets/js.pug
+
+    block scripts
+
+    // Custom and plugin javascript
+    script(src='/dashboard/assets/js/inspinia.js', type='text/javascript')
+    script(src='/dashboard/assets/js/plugins/pace/pace.min.js', type='text/javascript')
+    script(src='/dashboard/assets/js/main.js', type='text/javascript')

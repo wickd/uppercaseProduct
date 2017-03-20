@@ -1,0 +1,56 @@
+{
+	"env": "localhost",
+	"serverPort": 3000,
+	"serverUrl": "http://localhost",
+	"db": {
+		"host": "10.1.1.151",
+		"user": "labelike",
+		"password": "labelike111",
+		"database": "labelike",
+		"port": 5432,
+		"max": 20,
+		"min": 4,
+		"idleTimeoutMillis": 1000
+	},
+	"jwt": {
+		"secret": "vr-b3DC8h)yh4btDF~cTw<zR9N(kZ?<NWq8AI)l_",
+		"expiresIn": 3600
+	},
+	"dashboard_jwt": {
+		"secret": ",-nE]%;O(Aa?+<vsD;D@FS34x%jC8$@7t:Yn!MgD",
+		"expiresIn": 3600
+	},
+	"facebook": {
+		"app_id": "300076833682178",
+		"app_secret": "49d113bfcd4bd1a2b9cbce34335bcc6d"
+	},
+	"aws": {
+		"bucket": "labelike",
+		"key": {
+			"avatar": "avatar",
+			"gallery": "gallery",
+			"social" : "social"
+		},
+		"accessKeyId": "AKIAJGWSINL2HXTRVQ5Q",
+		"secretAccessKey": "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",
+		"region": "eu-central-1",
+		"s3_signature_version": "v4",
+		"url": "http://labelike.s3.amazonaws.com/"
+	},
+	"paypal": {
+		"url": "https://svcs.sandbox.paypal.com/",
+		"user_id": "im2to_1318950577_biz_api1.hackercomputers.com",
+		"password": "1318950602",
+		"signature": "AjRQuQHkfd8e4jYUvraMsVcDAjaMAHVGUTsS.cpRtpB4ldlv.qEV9AaN",
+		"app_id": "APP-80W284485P519543T",
+		"request_data_format": "NV",
+		"response_data_format": "JSON"
+	},
+	"mail": {
+		"host": "mail.ebs-integrator.com",
+		"port": 443,
+		"username": "noreply@ebs-integrator.com",
+		"password": "uXA2rt8Zhc",
+		"from": "noreply@ebs-integrator.com"
+	}
+}

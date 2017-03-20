@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    if(status != undefined)
+        h1 !{status}
+    else
+        h1 404
+
+    h3.font-bold Something Wrong !!!
+
+    .error-desc !{error}
+
+    .error-desc.text-left !{error.stack}
+
+    div
+        h4.font-bold
+            a(href="/dashboard/") Go Home

@@ -1,0 +1,73 @@
+.wrapper.wrapper-content.animated.fadeInRight
+    .row
+        // TODO: !!! Parse module widgets, and add possibility to implement it.
+
+        // This is module's main widgets, its required.
+        include ./partials/notifications
+
+        .col-lg-12
+            include ../elements/widgets/ibox/main
+                include ../elements/widgets/ibox/header
+                    // todo: Add posibility to get table name from model instance instead of module title.
+                    h5.
+                        Module "!{schedule.getTitle()}" Data Table Rows
+                    // tools ...
+                .ibox-content
+                    form(action="", methdod="post")
+                        .row
+                            .col-sm-6.m-b.text-left
+                                - var global_actions = schedule.getGlobalActions(item);
+                                each action in global_actions
+                                    if(!action.isDisabled())
+                                        if(action.isReservedUrl())
+                                            a.btn.btn-sm.btn-primary(href=page + '/create-new' + queryString) Create
+                                        else
+                                            a.btn.btn-sm.btn-primary(href='#') !{action.getTitle()}
+
+                            .col-sm-6.m-b.text-right
+                                button.btn.btn-sm.btn-info(onClick="window.history.back();")
+                                    i.fa.fa-reply
+                                    |  Back
+
+                        .row
+                            .col-sm-12
+                                table.table.table-striped.table-bordered.tabel-hover
+                                    thead
+                                        tr
+                                            each column, index in columns
+                                                th !{column.title}
+
+                                            th Actions
+                                    tbody
+                                        each item in items.getResult()
+                                            - var each_actions = schedule.getEachActions(item);
+                                            tr.gradeA
+                                                each column in columns
+                                                    if(column.isGroup)
+                                                        td
+                                                            ul.list-unstyled
+                                                                each colInGroup in column.getElements()
+                                                                    - var value = colInGroup.getFormatted(item);
+                                                                    if(value)
+                                                                        if(colInGroup.isStandalone())
+                                                                            li
+                                                                                strong !{value}
+                                                                        else
+                                                                            li.
+                                                                                #[label(for=colInGroup.getName()) !{colInGroup.getTitle()}]: #[span !{value}]
+                                                    else
+                                                        td !{column.getFormatted(item)}
+
+                                                td.actions
+                                                    each action in each_actions
+                                                        if(! action.isDisabled())
+                                                            span.
+                                                                #[a(href=action.getUrl(item.id, action.getName(), page)+queryString)&attributes(action.getStyles()) !{action.getTitle()}]
+
+                                    tfoot
+                                        tr
+                                            each column, index in columns
+                                                th !{column.title}
+                                            th Actions
+
+                        include ./partials/pagination

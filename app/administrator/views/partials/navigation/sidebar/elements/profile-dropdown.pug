@@ -1,0 +1,23 @@
+.dropdown.profile-element
+    span
+        img.img-circle(src="/dashboard/assets/img/profile_small.jpg", alt="cover")
+
+    a.dropdown-toggle(href="#", data-toggle="dropdown")
+        span.clear
+            span.block.m-t-xs
+                strong.font-bold EBS Administrator
+
+        //
+            span.text-muted.text-xs.block Art Director &nbsp;
+                b.caret
+//
+    ul.dropdown-menu.animated.fadeInRight.m-t-xs
+        li
+            a(href="#") Profile
+        li
+            a(href="#") Contacts
+        li
+            a(href="#") Mailbox
+        li.divider
+        li
+            a(href="/dashboard/logout") Logout

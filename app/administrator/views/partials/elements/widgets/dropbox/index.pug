@@ -1,0 +1,9 @@
+
+form.dropzone(action='/file-upload')
+    .fallback
+        input(name='file', type='file', multiple='')
+
+
+block scripts
+    // iCheck
+    script(src='/dashboard/assets/js/plugins/dropzone/dropzone.min.js', type='text/javascript')

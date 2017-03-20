@@ -1,0 +1,17 @@
+nav.navbar-default.navbar-static-side(role="navigation")
+    .sidebar-collapse
+        ul#side-menu.nav.metismenu
+            li.nav-header
+                include elements/profile-dropdown
+
+                // On minimalize nav-bar
+                .logo-element EBS
+
+            - var navigate_menu = navigatable.getPages();
+
+            if(navigate_menu != null)
+                each nav_item in navigate_menu
+                    if(nav_item.isGroup)
+                        include elements/directory
+                    else
+                        include elements/item

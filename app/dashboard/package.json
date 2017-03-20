@@ -1,0 +1,40 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "ExpressJs Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@10.1.1.159:root/expressjs-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.4.7",
+    "co": "^4.6.0",
+    "config": "^1.24.0",
+    "crypto": "0.0.3",
+    "gm": "^1.23.0",
+    "html-to-text": "^3.0.0",
+    "image-size": "^0.5.1",
+    "lodash": "^4.17.3",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.17.1",
+    "mysql": "^2.12.0",
+    "nodemailer": "^2.7.0",
+    "paginator": "^1.0.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pg": "^6.1.2",
+    "pug": "^2.0.0-beta6",
+    "querystring": "^0.2.0",
+    "slug": "^0.9.1",
+    "url": "^0.11.0",
+    "util": "^0.10.3"
+  }
+}

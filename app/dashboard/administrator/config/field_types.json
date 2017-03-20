@@ -1,0 +1,21 @@
+{
+  "text": "./type/text",
+  "bool": "./type/bool",
+  "hidden": "./type/hidden",
+  "email": "./type/email",
+  "number": "./type/number",
+  "price": "./type/price",
+  "password": "./type/password",
+  "textarea": "./type/textarea",
+  "tel": "./type/tel",
+  "key": "./type/key",
+  "select": "./type/select",
+  "custom": "./type/custom",
+  "date": "./type/date",
+  "time": "./type/time",
+  "summernote": "./type/summernote",
+  "file": "./type/file",
+  "image": "./type/image",
+  "map": "./type/map",
+  "flex": "./type/flex"
+}

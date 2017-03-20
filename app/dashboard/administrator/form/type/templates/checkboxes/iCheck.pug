@@ -1,0 +1,9 @@
+input(type="hidden", name=element.getNewName(), value=0)
+input(
+    type="checkbox",
+    name=element.getNewName()
+    id=element.getName(),
+    data-checkbox="iCheck",
+    value=1,
+    checked=Boolean(element.getValue())
+)&attributes(element.attributes)

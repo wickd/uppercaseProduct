@@ -1,0 +1,53 @@
+extends layout
+
+block title
+    title PGI | Dashboard Login
+
+block content
+    body(class='gray-bg')
+        .middle-box.text-center.loginscreen.animated.fadeInDown
+            div
+                h3 Welcome to PGI Dashboard!
+                p Login in. To see it in action.
+
+                form(method='post', class='m-t', role='form')
+                    .form-group
+                        input(
+                            type='text'
+                            class='form-control'
+                            placeholder='Email'
+                            name='email'
+                            id='email'
+                            required
+                        )
+
+                    .form-group
+                        input(
+                            type='password',
+                            name='password',
+                            class='form-control',
+                            placeholder='Password'
+                            id='password',
+                            required
+                        )
+
+                    //.form-group
+                    //    label(for='remember_me') Remember me:
+                    //        input(
+                    //            type='checkbox',
+                    //            class='form-control',
+                    //            name='remember_me'
+                    //            id='remember_me'
+                    //        )
+
+                    - var button_classes = ['btn', 'btn-primary', 'block', 'full-width', 'm-b'];
+                    button(class=button_classes, type='submit') Login
+
+                    //a(href='#')
+                    //    small Forgot password?
+                    //p.text-muted.text-center
+                    //    small Do not have an accaunt?
+                    //a(href='#').btn.btn-sm.btn-white.btn-block Create an account
+
+                p.m-t
+                    small PGI Dashboard

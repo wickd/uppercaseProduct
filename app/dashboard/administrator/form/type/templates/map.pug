@@ -1,0 +1,45 @@
+- var default_lat = 53.00;
+- var default_lon = 9.00;
+//TODO FIX LATITUDE AND LONGITUDE FIELDS IF IN DATABASE ARE DIFFERENT THAN 'lat' AND 'LON'
+script.
+    maps['!{mapId}'] = function(mapId)
+    {
+        var lat_input = '!{lat}';
+        var lon_input = '!{lon}';
+        var lat = ('!{element.getValue("lat")}') ? '!{element.getValue("lat")}' : !{default_lat};
+        var lng = ('!{element.getValue("lon")}') ? '!{element.getValue("lon")}' : !{default_lon};
+        var myLatlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
+
+        var map = new google.maps.Map(document.getElementById(mapId), {
+            zoom: 6,
+            center: myLatlng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map
+        });
+
+        if(document.getElementById(lat_input) && document.getElementById(lon_input))
+        {
+            google.maps.event.addListener(map, 'click', function (event) {
+                document.getElementById(lat_input).value = event.latLng.lat();
+                document.getElementById(lon_input).value = event.latLng.lng();
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                document.getElementById(lat_input).value = this.getPosition().lat();
+                document.getElementById(lon_input).value = this.getPosition().lng();
+            });
+
+            map.addListener('click', function (e) {
+                marker.setPosition(e.latLng);
+            });
+        }
+    };
+
+input(type="hidden", name=lat, id=lat, value=element.getValue('lat', default_lat))
+
+input(type="hidden", name=lon, id=lon, value=element.getValue('lon', default_lon))
+
+div(id=mapId)&attributes(element.attributes)

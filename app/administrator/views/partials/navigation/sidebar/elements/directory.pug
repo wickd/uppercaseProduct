@@ -1,0 +1,13 @@
+li(class= h.object_key_exists(navigatable.getCurrentPage(), nav_item['pages']) ? 'active' : '')
+    - var folder_icon = ["fa", nav_item.icon];
+    a(href="#").
+        #[i(class=folder_icon)] #[span(class=nav-label) !{nav_item.title}] #[span.fa.arrow]
+
+    - var nav_folder_pages = nav_item.pages;
+    if(nav_folder_pages != undefined)
+        ul.nav.nav-second-level.collapse
+            each nav_item in nav_folder_pages
+                if(nav_item != undefined)
+                    li(class=navigatable.isActive(nav_item.page) ? 'active' : '')
+                        - var icon = [ 'fa', nav_item.icon ];
+                        a(href=nav_item.link) #[i(class=icon)] #{nav_item.title}

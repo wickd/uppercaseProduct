@@ -1,0 +1,11 @@
+if(session.hasErrors())
+    .col-lg-12
+        include ./errors
+
+if(session.hasSuccess())
+    .col-lg-12
+        include ./success
+
+if(session.hasWarnings())
+    .col-lg-12
+        include ./warning

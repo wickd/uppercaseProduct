@@ -1,0 +1,11 @@
+{
+  "db_driver": "mysql",
+  "dashboard_path": "./app/administrator",
+  "crud_path": "./app/administrator/cruds/",
+  "multilingual": false,
+  "models_path": "./app/administrator/models/",
+  "auth_redirect": "",
+  "rows_per_page": 75,
+  "get_administrator_path": "./app/dashboard/administrator/",
+  "gmap_api_key": "AIzaSyAORpBitSQJ9qj6QuRMVISWDoq8ebbfGU8"
+}

@@ -1,0 +1,82 @@
+extends ../../../layout
+
+block title
+    - var editors = fieldFactory.getEditors();
+    title PGI | Dashboard | #{page}
+
+block styles
+    // iCheck
+    link(href='/dashboard/assets/css/plugins/iCheck/custom.css', rel='stylesheet')
+    // Datapicker
+    link(href='/dashboard/assets/css/plugins/datapicker/datepicker3.css', rel='stylesheet')
+    // Daterange
+    //link(href='/dashboard/assets/css/plugins/daterangepicker/daterangepicker-bs3.css', rel='stylesheet')
+
+    if(h.in_object('summernote', editors))
+        // Summernote Wysiwyg editor.
+        link(href='/dashboard/assets/css/plugins/summernote/summernote.css', rel='stylesheet')
+        link(href='/dashboard/assets/css/plugins/summernote/summernote-bs3.css', rel='stylesheet')
+
+block content
+    .row.wrapper.border-bottom.white-bg.page-heading
+        .col-lg-10
+            h2 !{h.uc_first(action)} !{schedule.getTitle()}
+
+            ol.breadcrumb
+                li Dashboard
+
+                li #{schedule.getTitle()}
+
+                li.active
+                    strong !{h.uc_first(action)}
+
+    .wrapper.wrapper-content.animated.fadeInRight
+        .row
+            .col-lg-12
+                .col-sm-6.m-b.text-right
+                    button.btn.btn-sm.btn-info(onClick="window.history.back();")
+                        i.fa.fa-reply
+                        |  Back
+                include ../../elements/widgets/ibox/main
+                    .ibox-content
+
+                        form(method="post", enctype='application/json' action="", class="form-horizontal")
+                            each field in fieldFactory.getFields(action)
+                                .form-group
+                                    label(class="col-sm-2 control-label", for=field.getName()) !{field.getLabel()}:
+                                        if(field.getDescription())
+                                            p.small !{field.getDescription()}
+                                    .col-sm-10
+                                        span !{field.getValue()}
+
+                                if(! field.isHidden())
+                                    .hr-line-dashed
+
+                            .form-group
+                                .col-sm-10.col-sm-offset-2.
+                                    #[a(class="btn btn-sm btn-success", href="/dashboard/pages/" + page) Back]
+
+                                    #[a(class="btn btn-sm btn-primary", href="/dashboard/pages/" + page + "/" + item.id + "/edit") Edit]
+
+block scripts
+    // iCheck
+    script(src='/dashboard/assets/js/plugins/iCheck/icheck.min.js', type='text/javascript')
+    // Datepicker
+    script(src='/dashboard/assets/js/plugins/datapicker/bootstrap-datepicker.js', type='text/javascript')
+    // Daterange
+    //script(src='/dashboard/assets/js/plugins/daterangepicker/daterangepicker.js', type='text/javascript')
+
+    if(h.in_object('summernote', editors))
+        // Summernote
+        script(src='/dashboard/assets/js/plugins/summernote/summernote.min.js', type='text/javascript')
+        script.
+            ($ => {
+                // Load wysiwyg Editors.
+                $(document).ready(() => {
+                const SUMMERNOTE_EDITOR = 'summernote';
+
+            $(`*[date-editor="${SUMMERNOTE_EDITOR}"]`).summernote();
+            });
+            })(jQuery);
+
+    script(src='/dashboard/assets/js/html_handlers.js', type='text/javascript')

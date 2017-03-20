@@ -1,0 +1,9 @@
+.alert.alert-danger.alert-dismissable
+    button.close(aria-hidden="true", data-dismiss="alert", type="button") ×
+    ul
+        each error, field in session.errors()
+            if(h.is_object(error))
+                each e in error
+                    li !{field} : !{e}
+            else
+                li !{field}: !{error}
