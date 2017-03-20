@@ -4,12 +4,35 @@
   "description": "web sit",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "set SUPPRESS_NO_CONFIG_WARNING=true && gulp default --environment"
   },
   "repository": {
     "type": "git",
     "url": "git@10.1.1.159:magrigoroae/sarco.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "clear": "0.0.1",
+    "co": "^4.6.0",
+    "compression": "^1.6.2",
+    "config": "^1.25.1",
+    "express": "^4.15.2",
+    "express-session": "^1.15.1",
+    "gulp": "^3.9.1",
+    "gulp-apidoc": "^0.2.5",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.1.0",
+    "moment": "^2.18.0",
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-beta11",
+    "squel": "^5.8.0"
+  }
 }

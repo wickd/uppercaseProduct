@@ -1,6 +1,7 @@
 let ServiceProvider = require(_namespace.library_path() + '/foundation/providers/routeServiceProvider');
 let wrap = require('co').wrap;
-let baseRouter = require(_namespace.app_path() + '/baseRouter');
+let web = require(_namespace.routes_path() + '/web');
+let api = require(_namespace.routes_path() + '/api');
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -34,9 +35,14 @@ class RouteServiceProvider extends ServiceProvider
         this.app().getExpressApplicationInstance()
             .use(wrap(this.app().get('templater')));
 
+        // Load web routes.
         this.app().getExpressApplicationInstance()
             // .use('/', [wrap(template)], wrap(baseRouter));
-            .use('/', [], wrap(baseRouter));
+            .use('/', [], wrap(web));
+
+        // Load api routes.
+        this.app().getExpressApplicationInstance()
+            .use('/', [], wrap(api));
 
 		// this.app().getExpressApplicationInstance()
   //           .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 

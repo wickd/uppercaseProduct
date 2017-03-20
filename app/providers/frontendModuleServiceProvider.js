@@ -10,8 +10,7 @@ class FrontendModuleServiceProvider extends ServiceProvider
     getExceptModules()
     {
         return [
-            'sources',
-            'common'
+            //
         ];
     }
 

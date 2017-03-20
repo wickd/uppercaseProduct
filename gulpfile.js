@@ -105,6 +105,6 @@ let minImg = function () {
 gulp.task('default', ['nodemon', 'sass', 'sass:watch']);
 // gulp.task('apidoc', apidocjs);
 gulp.task('nodemon', nodemonjs);
-// gulp.task('minImg', minImg);
-// gulp.task('sass:watch', sassWatch);
-// gulp.task('sass', sassLoad);
+gulp.task('minImg', minImg);
+gulp.task('sass:watch', sassWatch);
+gulp.task('sass', sassLoad);

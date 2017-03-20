@@ -11,15 +11,6 @@ let h = require('./libraries/helpers');
 let Namespace = require('./libraries/foundation/namespace');
 let Application = require('./libraries/foundation/application');
 
-//middlewares----------------------------------------------------
-let download = require('./middlewares/download');
-
-//controllers----------------------------------------------------
-let home = require('./app/frontend/pages/controller');
-
-//helpers--------------------------------------------------------
-let directoriesHelper = require('./helpers/directories');
-
 // view engine setup
 global.appRoot = path.resolve(__dirname);
 // app.locals.basedir = defPath;

@@ -1,5 +1,5 @@
 let Collection = require('../dashboard/eloquentable/collection');
-let Option = require('../administrator/models/settings');
+let Option = require(_namespace.app_path() + '/settings');
 let h = require('../dashboard/administrator/helpers');
 let Service = require('./service');
 

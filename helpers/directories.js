@@ -39,6 +39,5 @@ module.exports = {
         "use strict";
         return path.dirname(require.main.filename) + srcpath;
     }
-
 };
 

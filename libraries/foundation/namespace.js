@@ -45,13 +45,43 @@ class ApplicationPath {
     }
 
     /**
+     * Http path.
+     *
+     * @return {string}
+     */
+    http_path()
+    {
+        return this.basePath + DIRECTORY_SEPARATOR + 'app' + DIRECTORY_SEPARATOR + 'http';
+    }
+
+    /**
+     * Application routes path.
+     *
+     * @return {string}
+     */
+    routes_path()
+    {
+        return this.http_path() + DIRECTORY_SEPARATOR + 'routes';
+    }
+
+    /**
      * Get middlewares path directory.
      *
      * @return {string}
      */
     middlewares_path()
     {
-        return this.basePath + DIRECTORY_SEPARATOR + 'middlewares';
+        return this.http_path() + DIRECTORY_SEPARATOR + 'middlewares';
+    }
+
+    /**
+     * Get application controllers path.
+     *
+     * @return {string}
+     */
+    controllers_path()
+    {
+        return this.http_path() + DIRECTORY_SEPARATOR + 'controllers';
     }
 
     /**
@@ -62,6 +92,16 @@ class ApplicationPath {
     public_path()
     {
         return this.basePath + DIRECTORY_SEPARATOR + 'public';
+    }
+
+    /**
+     * Get application resources path.
+     *
+     * @return {string}
+     */
+    resources_path()
+    {
+        return this.basePath + DIRECTORY_SEPARATOR + 'resources';
     }
 
     /**
