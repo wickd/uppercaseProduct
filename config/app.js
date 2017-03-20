@@ -10,7 +10,6 @@ let RouteServiceProvider = require(app_provider_path + 'routeServiceProvider');
 let TemplateServiceProvider = require(app_provider_path + 'templateServiceProvider');
 let ServerServiceProvider = require(app_provider_path + 'serverServiceProvider');
 let AbortServiceProvider = require(app_provider_path + 'abortServiceProvider');
-let FrontendModuleServiceProvider = require(app_provider_path + 'frontendModuleServiceProvider');
 
 module.exports = {
 
@@ -69,7 +68,6 @@ module.exports = {
         RouteServiceProvider,
         TemplateServiceProvider,
         ServerServiceProvider,
-        FrontendModuleServiceProvider, // should be loaded before abort service provider.
         AbortServiceProvider
 	],
 

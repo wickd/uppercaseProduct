@@ -116,10 +116,21 @@ class ApplicationPath {
 
     /**
      * Get main library path
+     * @depricated
      *
      * @return {string}
      */
     library_path()
+    {
+        return this.basePath + DIRECTORY_SEPARATOR + 'libraries';
+    }
+
+    /**
+     * Get application vendor path.
+     *
+     * @return {string}
+     */
+    vendor_path()
     {
         return this.basePath + DIRECTORY_SEPARATOR + 'libraries';
     }

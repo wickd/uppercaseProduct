@@ -42,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
 
         // Load api routes.
         this.app().getExpressApplicationInstance()
-            .use('/', [], wrap(api));
+            .use('/api', [], wrap(api));
 
 		// this.app().getExpressApplicationInstance()
   //           .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 
