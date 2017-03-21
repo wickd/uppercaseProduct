@@ -4,5 +4,25 @@ let Route = require('express').Router();
 Route.get('/', [], (req, res, next) => {
 	return res.view('home');
 });
+Route.get('/about', [], (req, res, next) => {
+	return res.view('about');
+});
+
+Route.get('/careers', [], (req, res, next) => {
+	return res.view('careers');
+});
+Route.get('/services', [], (req, res, next) => {
+	return res.view('services/index');
+});
+Route.get('/portfolio', [], (req, res, next) => {
+	return res.view('portfolio/index');
+});
+
+Route.get('/portfolio/list', [], (req, res, next) => {
+	return res.view('portfolio/list');
+});
+Route.get('/portfolio/details', [], (req, res, next) => {
+	return res.view('portfolio/details');
+});
 
 module.exports = Route;

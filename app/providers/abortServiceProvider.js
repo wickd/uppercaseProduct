@@ -9,7 +9,7 @@ class AbortServiceProvider extends ServiceProvider
      */
     getAbortResponse(req, res, next)
     {
-        return res.renderModule('common/views/404');
+        return res.view('404');
     }
 
     /**

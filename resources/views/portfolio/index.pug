@@ -1,0 +1,23 @@
+extends ../layout
+block content
+    .content
+        .container
+            h1  Portfoliu
+            ol.portfolio
+                li
+                   a(href='/portfolio/list')
+                       h3  Construcții Industriale
+                       .img-box
+                           img(src='assets/img/about.jpg')
+                       .slider-left 100 Proiecte
+                       .slider-right
+                           button.btn-red vezi mai mult
+
+                li
+                    a(href='/portfolio/list')
+                        h3 Construcții Civile
+                        .img-box
+                             img(src='assets/img/civile.jpg')
+                        .slider-left 100 Proiecte
+                        .slider-right
+                            button.btn-red vezi mai mult

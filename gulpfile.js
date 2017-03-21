@@ -5,6 +5,8 @@ let livereload = require('gulp-livereload');
 let clear = require('clear');
 let apidoc = require('gulp-apidoc');
 let cleanCss = require('gulp-clean-css');
+let concat = require('gulp-concat');
+let uglify = require('gulp-uglify');
 let sass = require('gulp-sass');
 let imagemin = require('gulp-imagemin');
 let directoriesHelper = require('./helpers/directories');
@@ -50,35 +52,46 @@ let nodemonjs = function () {
         clear();
         sass();
         sassWatch();
-        // apidocjs();
         server();
     });
 };
 
 /**
+ * js
+ */
+
+gulp.task('js', function () {
+    return gulp.src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/modernizr/bin/modernizr.js',
+        'node_modules/slick-carousel/slick/slick.min.js',
+        'node_modules/chosen-js/chosen.jquery.js',
+        'node_modules/dropzone/dist/dropzone.js',
+        'public/assets/main.js',
+    ])
+        .pipe(concat('scripts.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('public/assets/js'));
+});
+
+gulp.task('watch', ['js'], function () {
+    gulp.watch('public/assets/js/*.js', ['js']);
+});
+
+/**
  * sass
  */
 let sassLoad = function () {
-
-    // let modules = directoriesHelper.getDirectories('./public/assets');
-    // for (var i = 0; i < modules.length; i++) {
-        gulp.src(`./public/assets/sass/*.scss`)
-            .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-            .pipe(cleanCss())
-            .pipe(gulp.dest(`./public/assets/css`));
-    // }
-
-    // return gulp.src('./app/frontend/common/sass/*.scss')
-    //     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    //     .pipe(cleanCss())
-    //     .pipe(gulp.dest('./public/app/common/css'));
-
+    gulp.src(`./public/assets/sass/*.scss`)
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(cleanCss())
+        .pipe(gulp.dest(`./public/assets/css`));
 };
 
 let sassWatch = function () {
     // let modules = directoriesHelper.getDirectories('./app/frontend');
     // for (var i = 0; i < modules.length; i++) {
-        gulp.watch(`./public/assets/sass/*.scss`, ['sass']);
+    gulp.watch(`./public/assets/sass/*.scss`, ['sass']);
 
     // }
 
@@ -92,9 +105,9 @@ let sassWatch = function () {
 let minImg = function () {
     // let modules = directoriesHelper.getDirectories('./app/frontend');
     // for (let i = 0; i < modules.length; i++) {
-        gulp.src(`./public/assets/img/**/*`)
-            .pipe(imagemin())
-            .pipe(gulp.dest(`./public/assets/img`));
+    gulp.src(`./public/assets/img/**/*`)
+        .pipe(imagemin())
+        .pipe(gulp.dest(`./public/assets/img`));
     // }
     // gulp.src('./app/frontend/common/img/**/*')
     //     .pipe(imagemin())
@@ -102,7 +115,7 @@ let minImg = function () {
 };
 
 // Task-------------------------
-gulp.task('default', ['nodemon', 'sass', 'sass:watch']);
+gulp.task('default', ['nodemon', 'sass', 'sass:watch', 'watch']);
 // gulp.task('apidoc', apidocjs);
 gulp.task('nodemon', nodemonjs);
 gulp.task('minImg', minImg);

@@ -1,0 +1,54 @@
+extends layout
+block content
+    .content
+        .container.about-container
+            .left
+                h1  Careers
+                p Încurajăm evoluţia profesională, recunoscând performanţa individuală şi propunând reale oportunităţi de carieră. Dacă deveniţi colegul nostru, vă dezvoltaţi constant competenţele pentru a evolua în meseria dumneavoastră.
+                p Echipa Sarco este foarte importantă pentru noi și vrem și o extindem cu noi colegi, capabili să ne susțină în demersul nostru de dezvoltare continuă.
+                p Dacă iți dorești să faci parte din echipa noastră, aplică pentru unul dintre posturile disponibile sau transmite CV-ul tău.
+
+
+                form.custom-form(action='' method='')
+                    .form-box.form-box-left
+                        label Nume
+                        input(type='text' placeholder='Text here')
+                    .form-box.form-box-right
+                        label Post
+                        select.chosen-select(data-placeholder="Select")
+                            option
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+                            option Post vacant
+
+                    .form-box.form-box-left
+                        label Prenume
+                        input(type='text' placeholder='Text here')
+                    .form-box.form-box-right
+                        label E-mail
+                        input(type='email' placeholder='Text here')
+
+
+                .form-title Atașează CV
+                form(action='/file-upload').dropzone
+                    //input(type='file')
+                    .dz-message
+                        img(src='/assets/img/drop.png')
+                        p Drag & Drop Your CV Here
+                        p or
+                        .btn-red select files
+
+                button.btn-red Aplica
+
+            .right
+                .about-box
+                    span
+                    .about-img
+                        img(src='/assets/img/careers.jpg')
+

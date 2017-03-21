@@ -1,3 +1,34 @@
-//
-   Created by levcenco.aliona on 3/20/2017.
+doctype html
+html(class="no-js" lang="")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="x-ua-compatible" content="ie=edge")
+        title Sarco
+        meta(name="description" content="")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
 
+        link(rel="apple-touch-icon" href="apple-touch-icon.png")
+        link(rel="stylesheet" href="/assets/css/chosen.css")
+        link(rel="stylesheet" href="/assets/css/style.css")
+    body
+
+
+        header
+            .container
+                .left
+                    a(href='/')
+                        img(src='/assets/img/logo.png')
+                .right
+                    ul.menu
+                        li
+                            a(href='/about').active Despre noi
+                        li
+                            a(href='/services') Servicii
+                        li
+                            a(href='/portfolio') Portfoliu
+                        li
+                            a(href='/careers') Cariere
+                        li
+                            a(href='javascript:;') Contact
+
+        block content
