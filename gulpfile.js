@@ -11,6 +11,7 @@ let sass = require('gulp-sass');
 let imagemin = require('gulp-imagemin');
 let directoriesHelper = require('./helpers/directories');
 let config = require('config');
+let pm2 = require('pm2');
 
 //supress config warning
 
@@ -114,8 +115,28 @@ let minImg = function () {
     //     .pipe(gulp.dest('./public/app/common/img/'))
 };
 
+let pm2Serve = () => {
+    pm2.connect(true, () => {
+        pm2.start({
+            name: 'sarco_dev',
+            script: 'index.js',
+            watch:true,
+            args :['--trace-warnings'],
+            env: {
+                NODE_ENV: "production",
+                NODE_CONFIG_DIR : './config'
+            },
+
+        }, () => {
+            console.log('pm2 started');
+            pm2.streamLogs('all', 0);
+        });
+    });
+}
+
 // Task-------------------------
 gulp.task('default', ['nodemon', 'sass', 'sass:watch', 'watch']);
+gulp.task('production', pm2Serve);
 // gulp.task('apidoc', apidocjs);
 gulp.task('nodemon', nodemonjs);
 gulp.task('minImg', minImg);

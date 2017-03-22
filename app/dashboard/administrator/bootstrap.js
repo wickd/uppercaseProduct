@@ -9,7 +9,7 @@ let Scheduler = require('../administrator/scheduler');
 let Navigation = require('../administrator/navigation');
 let FormBuilder = require('../administrator/form/builder');
 let Translatable = require('../translatable/translatable');
-let SettingsModel = require('../../administrator/models/settings');
+let SettingsModel = require(_namespace.app_path() + '/Option');
 let LanguageRepository = require('../repositories/languageRepository');
 
 module.exports = (req, res, next) => co(function *() {
