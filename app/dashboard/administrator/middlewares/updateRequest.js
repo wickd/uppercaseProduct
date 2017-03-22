@@ -1,7 +1,7 @@
 let config = require('../config');
 let Scheduler = require('../scheduler');
 let h = require('../helpers');
-let Validator = require.main.require('./app/baseValidator');
+let Validator = require('../validator');
 
 class UpdateRequest {
 

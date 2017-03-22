@@ -4,7 +4,7 @@ let pug = require('pug')
 let config = require('config').get('route')
 let c = require('config')
 let h = require(_namespace.app_path() + '/dashboard/administrator/helpers');
-let Settings = require(_namespace.app_path() + '/settings');
+let Option = require(_namespace.app_path() + '/option');
 let SettingsService = require(_namespace.app_path() + '/services/settingsService');
 let wrap = require('co').wrap;
 
@@ -27,6 +27,8 @@ class TemplateServiceProvider extends ServiceProvider
      */
     register()
     {
+        this.app().bind('view', (app) => { return {}; });
+
     	this.app().getExpressApplicationInstance()
             // .set('view engine', c.get('template.view_engine'));
     		.set('view engine', 'pug');
@@ -63,7 +65,7 @@ class TemplateServiceProvider extends ServiceProvider
      * @param {Function} next
      * @return {Response}
      */
-    * jadeLoader(req, res, next, provider)
+    * jadeLoader(req, res, next, view)
     {
         // ? provider 
         // let options = yield (new Settings()).getPublic();
@@ -79,9 +81,11 @@ class TemplateServiceProvider extends ServiceProvider
             json.cache = config.cache;
             // json.settings = (new SettingsService(options));
 
+            let viewData = h.object_merge(this.app().get('view'), json);
+
             //render
             try {
-                let file = pug.renderFile(`${json.basedir}/${view}.pug`, json);
+                let file = pug.renderFile(`${json.basedir}/${view}.pug`, viewData);
                 //status and output
                 status && res.status(status);
                 res.send(file);

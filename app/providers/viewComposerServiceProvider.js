@@ -12,24 +12,11 @@ class ViewComposerServiceProvider extends ServiceProvider
         super(app);
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return {null}
-     */
-    register()
+    compose(view)
     {
-        //
-    }
+        view.nav_menu = this.app().get('navigation');
 
-    /**
-     * Bootstrap any application services.
-     *
-     * 
-     */
-    boot()
-    {
-
+        view.test = 10;
     }
 }
 

@@ -2,8 +2,8 @@ let mime = require('mime');
 let multer = require('multer');
 let router = require('express').Router();
 let config = require('config');
-let auth = require('../../middlewares/auth');
-let guest = require('../../middlewares/guest');
+let auth = require(_namespace.middlewares_path() + '/auth');
+let guest = require(_namespace.middlewares_path() + '/guest');
 let controller = require('./administrator/controller');
 let application = require('./administrator/bootstrap');
 let action = require('./administrator/helpers/router');
@@ -52,7 +52,7 @@ router.post('/ajax/login',authController.ajaxLogin);
 //security middleware
 // router.use(auth.midd);
 
-router.use('/api',require('../../app/administrator/api/router'));
+// router.use('/api',require('../../app/administrator/api/router'));
 router.get('/', action('dashboard'));
 router.get('/pages/:page', [application, action('index')], controller.index);
 router.get('/pages/:page/:id/:action', [application, action()], controller.actions);

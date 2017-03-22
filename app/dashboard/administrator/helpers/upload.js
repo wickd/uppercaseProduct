@@ -11,7 +11,7 @@ var gm = require('gm');
 let b = require('bluebird');
 let h = require('../helpers');
 let f = require('../helpers/functions');
-let Attachment = require('../../../administrator/models/attachment');
+let Attachment = require(_namespace.app_path() + '/Attachment');
 
 /**
  * default settings

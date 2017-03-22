@@ -1,0 +1,62 @@
+{
+  "env": "localhost",
+  "serverPort": 3000,
+  "serverUrl": "http://localhost",
+  "db": {
+    "host": "10.1.1.226",
+    "driver": "mysql",
+    "user": "sarco_node_dev",
+    "password": "4wDepEtxKXrS",
+    "database": "sarco_node_dev",
+    "port": 3306,
+    "max": 20,
+    "min": 4,
+    "idleTimeoutMillis": 1000,
+    "cacheOptions": {
+      "store": "disabled", //redis | memcache | memory | disabled
+      "connection":{
+        "host":"127.0.0.1",
+        "port":"6379"
+      },
+      "options": {},
+      "ttl": 300,
+      "tti": 300
+    }
+  },
+  "mail": {
+    "host": "mail.ebs-integrator.com",
+    "port": 587,
+    "username": "noreply@ebs-integrator.com",
+    "password": "uXA2rt8Zhc",
+    "from": "Sarco <noreply@ebs-integrator.com>",
+    "log": true,
+    "to": "sunstrikemd@gmail.com"
+  },
+  "jwt": {
+    "secret": "vr-b3DC8h)yh4btDF~cTw<zR9N(kZ?<NWq8AI)l_",
+    "expiresIn": 3600
+  },
+  "dashboard_jwt": {
+    "secret": ",-nE]%;O(Aa?+<vsD;D@FS34x%jC8$@7t:Yn!MgD",
+    "expiresIn": 3600
+  },
+  "route": {
+    "default": "pages",
+    "except": [
+      "common",
+      "dashboard"
+    ],
+    "cache": false,
+    "maxAge": 0
+  },
+  "reCaptcha": { 
+    "key": "6LfZzhUUAAAAAOUwSxF_ztwN7A_GEHMj5B1MCAao", 
+    "secret": "6LfZzhUUAAAAAIhnn1CdP5-680lftBnAb7YUUcaq" 
+  }, 
+  "auth": { 
+    "facebook": { 
+      "id": 1875821649303497, 
+      "secret": null 
+    } 
+  }
+}

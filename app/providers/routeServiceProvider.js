@@ -32,20 +32,25 @@ class RouteServiceProvider extends ServiceProvider
      */
     boot()
     {
+        // Todo: build every route as a instance and make them generator.
+
+        // this.app().bind('routes', (app) => []);
+
         this.app().getExpressApplicationInstance()
             .use(wrap(this.app().get('templater')));
 
         // Load web routes.
         this.app().getExpressApplicationInstance()
             // .use('/', [wrap(template)], wrap(baseRouter));
+            // .use('/', wrap(web));
             .use('/', [], wrap(web));
 
         // Load api routes.
         this.app().getExpressApplicationInstance()
             .use('/api', [], wrap(api));
 
-		// this.app().getExpressApplicationInstance()
-  //           .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 
+		this.app().getExpressApplicationInstance()
+            .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 
 	}
 }
 

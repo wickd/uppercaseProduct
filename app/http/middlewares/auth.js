@@ -1,6 +1,4 @@
 let passport = require('passport');
-let admin = require.main.require('./app/administrator/models/admin.js');
-let adminRepository = require.main.require('./app/dashboard/repositories/adminRepository.js');
 let helpers = require.main.require('./helpers');
 let defPath = './app/dashboard';
 

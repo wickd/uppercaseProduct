@@ -115,6 +115,17 @@ class ApplicationPath {
     }
 
     /**
+     * Get application helpers path.
+     * @depricated
+     *
+     * @return {string}
+     */
+    helpers_path()
+    {
+        return this.basePath + DIRECTORY_SEPARATOR + 'helpers';
+    }
+
+    /**
      * Get main library path
      * @depricated
      *

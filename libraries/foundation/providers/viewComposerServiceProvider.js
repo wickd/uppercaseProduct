@@ -29,7 +29,12 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     boot()
     {
+        if(this.compose)
+        {
+            this.compose(this.app().get('view'));
+        }
 
+        // this.app().get('view')
     }
 }
 
