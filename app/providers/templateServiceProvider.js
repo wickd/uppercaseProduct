@@ -4,7 +4,7 @@ let pug = require('pug')
 let config = require('config').get('route')
 let c = require('config')
 let h = require(_namespace.app_path() + '/dashboard/administrator/helpers');
-let Option = require(_namespace.app_path() + '/option');
+let Option = require(_namespace.app_path() + '/Option');
 let SettingsService = require(_namespace.app_path() + '/services/settingsService');
 let wrap = require('co').wrap;
 
