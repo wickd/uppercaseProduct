@@ -1,4 +1,4 @@
-let Attachment = require('../../../administrator/models/attachment');
+let Attachment = require(_namespace.app_path() + '/Attachment');
 
 /**
  * attachment mixin

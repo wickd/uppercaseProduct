@@ -52,7 +52,7 @@ router.post('/ajax/login',authController.ajaxLogin);
 //security middleware
 // router.use(auth.midd);
 
-// router.use('/api',require('../../app/administrator/api/router'));
+router.use('/api', require(_namespace.app_path() + '/administrator/api/router'));
 router.get('/', action('dashboard'));
 router.get('/pages/:page', [application, action('index')], controller.index);
 router.get('/pages/:page/:id/:action', [application, action()], controller.actions);

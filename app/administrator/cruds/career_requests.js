@@ -1,43 +1,38 @@
-let model = require('../models/technology');
+let model = require(_namespace.app_path() + '/CareerRequest');
 let f = require('../../dashboard/administrator/helpers/functions');
 let h = require('../../dashboard/administrator/helpers');
 
 let element =
     {
-        title : "Technologies",
+        title : "Career requests",
         model : model,
         columns : {
             id : {},
+            firstname : {},
+            lastname : {},
+            email : {},
             position_id : {
                 title : "Position",
                 output : row => row.position().then(post => post ? post.name : 'no-post')
             },
-            firstname : {},
-            lastname : {},
-            email : {},
             active : {
                 output : row => f.output_boolean(row)
             }
         },
         actions : {
-            each : {
-                showcases : {
-                    title : 'Showcases',
-                    url : `showcase_technologies?technology=(:id)`
+            global : {
+                create : {
+                    disabled : true
                 }
             }
         },
         query : q => q.order("id", false),
         edit_fields : {
-            id : {
-                type : "hidden",
-            },
-            name : {},
             active : {
                 type : 'select',
                 options : {
-                    0 : 'No',
-                    1 : 'Yes'
+                    0 : 'Inactive',
+                    1 : 'Active'
                 }
             }
         }
