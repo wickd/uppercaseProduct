@@ -2,7 +2,7 @@
   "db_driver": "mysql",
   "dashboard_path": "./app/administrator",
   "crud_path": "./app/administrator/cruds/",
-  "multilingual": false,
+  "multilingual": true,
   "models_path": "./app/administrator/models/",
   "auth_redirect": "",
   "rows_per_page": 75,

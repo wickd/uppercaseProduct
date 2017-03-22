@@ -12,96 +12,25 @@
         "title": "Service showcases"
       }
     }
-  },  
-  "showcases": {
-    "icon": "fa fa-folder",
-    "title": "Showcase",
-    "pages": {
-      "showcases": {
-        "icon": "fa fa-circle-o",
-        "title": "Showcases"
-      },
-      "technologies": {
-        "icon": "fa fa-circle-o",
-        "title": "Technologies"
-      },
-      "showcase_technologies": {
-        "icon": "fa fa-code-fork",
-        "title": "Showcase Technologies"
-      }
-    }
   },
-  "posts": {
-    "icon": "fa fa-folder",
-    "title": "Events",
-    "pages": {
-      "posts": {
-        "icon": "fa fa-circle-o",
-        "title": "Posts"
-      },
-      "categories": {
-        "icon": "fa fa-circle-o",
-        "title": "Categories"
-      },
-      "post_categories": {
-        "icon": "fa fa-code-fork",
-        "title": "Post Categories"
-      },
-      "comments": {
-        "icon": "fa fa-comment",
-        "title": "Comments"
-      }
-    }
-  },
-  "events": {
-    "icon": "fa fa-folder",
-    "title": "Events",
-    "pages": {
-      "events": {
-        "icon": "fa fa-circle-o",
-        "title": "Events"
-      },
-      "event_requests": {
-        "icon": "fa fa-circle-o",
-        "title": "Event Requests"
-      }
-    }
-  },
-  "news": {
+  "career_requests" : {
     "icon": "fa fa-circle-o",
-    "title": "News"
+    "title": "Career requests"
   },
-  "pages": {
-    "icon": "fa fa-circle-o",
-    "title": "Pages"
+  "languages" : {
+    "icon": "fa fa-circle-o"
   },
-  "projects": {
-    "icon": "fa fa-circle-o",
-    "title": "Projects"
+  "categories" : {
+    "icon": "fa fa-circle-o"
   },
-  "settings":{
-    "icon": "fa-cog",
-    "pages":{
-      "contact_us": {
-        "icon": "fa fa-circle-o",
-        "title": "Contact Us"
-      },
-      "partners": {
-        "icon": "fa fa-circle-o",
-        "title": "Partners"
-      },
-      "companies": {
-        "icon": "fa fa-circle-o",
-        "title": "Companies"
-      },
-      "client_feedbacks": {
-        "icon": "fa fa-circle-o",
-        "title": "Clients feedbacks"
-      },
-      "socials": {
-        "icon": "fa fa-circle-o",
-        "title": "Socials"
-      }
-    }
+  "positions" : {
+    "icon": "fa fa-circle-o"
+  },
+  "constructions" : {
+    "icon": "fa fa-circle-o"
+  },
+  "contact_us" : {
+    "icon" : "fa fa-circle-o",
+    "title" : "Contact Us"
   }
 }

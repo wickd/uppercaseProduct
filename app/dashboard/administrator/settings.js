@@ -1,5 +1,5 @@
 let h = require('./helpers');
-let SettingsModel = require(_namespace.app_path() + '/option');
+let SettingsModel = require(_namespace.app_path() + '/Option');
 let Collection = require('../eloquentable/collection');
 const KEY_FIELD = 'key_name';
 const VALUE_FIELD = 'value';
