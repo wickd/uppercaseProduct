@@ -144,6 +144,11 @@ body {
   margin: 0;
 }
 
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -203,7 +208,65 @@ header {
 
 .menu {
   margin: 23px 0;
-  li {
+
+  .has-submenu {
+    &:after {
+      content: '';
+      position: absolute;
+      right: 18px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 0 4px 4px;
+      border-color: transparent transparent transparent #848585;
+      top: 50%;
+      margin-top: -4px;
+
+    }
+    &:hover:after {
+      border-color: transparent transparent transparent #fff;
+    }
+  }
+  ol {
+    position: absolute;
+    z-index: 8;
+    width: 220px;
+    background-color: #f9f9f9;
+    display: none;
+    li {
+      list-style: none;
+      display: block;
+      position: relative;
+      a {
+        color: #101010;
+        font: 14px 'titillium_websemibold';
+        text-transform: uppercase;
+        border-bottom: 1px solid #dedede;
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+  > li {
+    &:hover {
+      > ol {
+        display: block;
+      }
+    }
+    > ol {
+      top: 100%;
+      left: 0;
+      li:hover {
+        ol {
+          display: block;
+        }
+      }
+      ol {
+        left: 100%;
+        top: 0;
+      }
+    }
+    position: relative;
     display: inline-block;
     margin: 0 0 0 20px;
     a {
@@ -221,6 +284,16 @@ header {
       }
       &.active {
         border-bottom-color: #c22328;
+      }
+    }
+    &:hover {
+      > a:not(.active) {
+        border-bottom-color: #c22328;
+        background: #c22328;
+        color: #fff;
+      }
+      > ol {
+        display: block;
       }
     }
   }
@@ -627,6 +700,7 @@ Portfolio
 .details {
   width: 300px;
   padding-left: 30px;
+  max-width: 100%;
 }
 
 .info-box {
@@ -654,7 +728,7 @@ Portfolio
 }
 
 .details {
-  position: static;
+  position: relative;
   .fixed & {
     position: fixed;
     top: 50px;
@@ -1087,6 +1161,10 @@ Contact
   }
 }
 
+.close-menu {
+  display: none;
+}
+
 .form-submit {
   color: #fff;
   text-transform: uppercase;
@@ -1194,7 +1272,7 @@ Contact
   .content ul {
     margin-top: 15px;
   }
-  .content p {
+  .content p, .content a {
     font-size: 15px;
   }
   .about-box:after {
@@ -1244,12 +1322,23 @@ Contact
     max-width: 100px;
     margin: 11px 0;
   }
-  .menu li a {
+  .menu > li a {
     font-size: 13px;
     padding: 9px 7px 7px;
   }
-  .menu li {
+  .menu > li {
     margin: 0 0 0 15px;
+  }
+  .menu ol li a {
+    font-size: 12px;
+  }
+  .menu ol {
+    width: 180px;
+  }
+  .menu > li > ol ol {
+    left: auto;
+    top: 0;
+    right: 100%;
   }
   .lang {
     margin: 23px 0 23px 5px;
@@ -1266,4 +1355,189 @@ Contact
   footer {
     font-size: 12px;
   }
+  .content h2 {
+    font-size: 18px;
+  }
+  .content ul li a {
+    font-size: 12px;
+  }
+  .content p, .content a {
+    font-size: 14px;
+  }
+  .about-img {
+    height: 270px;
+  }
+  .portfolio li h3, .portfolio-list li h3 {
+    font-size: 20px;
+    margin: 0 0 20px;
+  }
+  .portfolio-list li {
+    width: 48%;
+  }
+  .portfolio-list li:nth-child(3n-1) {
+    margin: 0 0 30px;
+  }
+  .portfolio-list li:nth-child(2n) {
+    margin-left: 4%;
+  }
+  .form-box.form-box-left, .form-box.form-box-right {
+    float: none;
+    width: 100%;
+  }
+  .dropzone .dz-preview .dz-remove {
+    margin: 5px 0 0 10px;
+  }
+  .dropzone .dz-preview {
+    padding: 10px 12px;
+  }
+  .info-box strong {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .lang {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    margin: 0;
+    a {
+      display: block;
+      padding: 8px 5px;
+      &:first-child {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  header {
+    padding: 0;
+    .left {
+      width: 100%;
+      text-align: center;
+    }
+    .right {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(0, 0, 0, .3);
+      z-index: 10;
+      overflow: auto;
+    }
+    .menu {
+      background: #fff;
+      min-height: 100vh;
+      width: 320px;
+      margin: 0;
+      padding-top: 90px;
+      li {
+        display: block;
+        margin: 0;
+        width: 100%;
+      }
+      ol {
+        position: relative;
+        width: 100%;
+      }
+    }
+  }
+  .menu > li > a {
+    border-bottom: 1px solid #cacaca;
+    font: 16px 'titillium_webregular';
+    color: #3c3c3c;
+    padding: 13px 30px;
+  }
+  .menu a.active, .menu > li a.active, .menu a:hover, .menu > li:hover > a:not(.active), .menu ol a:hover, .menu > li a:not(.active):hover {
+    border-color: #c7b69a;
+    color: #fff;
+    background-color: #c7b69a;
+  }
+  .submenu {
+    &:after {
+      content: '';
+      position: absolute;
+      right: 18px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 4px 0 4px;
+      border-color: #848585 transparent transparent transparent;
+      top: 50%;
+      margin-top: -2px;
+
+    }
+    &:hover:after {
+      border-color: #fff transparent transparent transparent;
+    }
+  }
+  .menu ol li a {
+    padding-left: 40px;
+    font: 16px 'titillium_webregular';
+  }
+  .close-menu {
+    width: 30px;
+    height: 30px;
+    background: url("../img/close.png") no-repeat center;
+    display: block;
+    position: absolute;
+    left: 270px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .mobile-menu {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    background: url("../img/menu.png") no-repeat center;
+  }
+  .main-slider {
+    height: calc(100vh - 83px);
+  }
+  .slider-info {
+    max-width: 90%;
+    width: 470px;
+  }
+  .about-container .right {
+    display: none;
+  }
+  .about-container .left {
+    float: none;
+    width: 100%;
+  }
+  .content {
+    min-height: calc(100vh - 180px);
+  }
+  .btn-red {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .portfolio li h3, .portfolio-list li h3 {
+    font-size: 16px;
+    margin: 0 0 20px;
+  }
+  .portfolio li a, .portfolio-list li a {
+    padding: 20px 12px;
+  }
+  .portfolio-left {
+    width: 50%;
+  }
+  .portfolio-right {
+    width: 50%;
+    max-width: 50%;
+  }
+  .form-box.form-box-left {
+    width: 48%;
+    float: left;
+    clear: both;
+  }
+  .form-box.form-box-right {
+    width: 48%;
+    float: right;
+  }
+
 }

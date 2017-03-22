@@ -74,16 +74,38 @@ $('document').ready(function () {
     });
     if ($('.details').length) {
         $(window).on('scroll', function (e) {
-            console.log($(window).scrollTop());
-            if ($(window).scrollTop() > 120) {
+            var top = 120;
+            if ($(window).width() < 768) {
+                top = 65;
+            }
+            if ($(window).scrollTop() > top) {
                 $('body').addClass("fixed");
             } else {
                 $('body').removeClass("fixed");
             }
         });
     }
+    $('body').on('click', '.mobile-menu', function () {
+        $('body').addClass('no-scroll');
+        $('header .right').fadeIn();
+    });
+    $('body').on('click', '.close-menu', function () {
+        $('body').removeClass('no-scroll');
+        $('header .right').fadeOut();
+    });
+    $(document).mouseup(function (e) {
+        var container = $("header .right .menu");
+        if ($(window).width() < 768) {
+            if (!container.is(e.target) // if the target of the click isn't the container...
+                && container.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                $('body').removeClass('no-scroll');
+                $('header .right').fadeOut();
+            }
+        }
 
 
+    });
 });
 function initMap() {
     var uluru = {lat: 47.0358392, lng: 28.8376207};
