@@ -9,7 +9,7 @@ block content
                 p Dacă iți dorești să faci parte din echipa noastră, aplică pentru unul dintre posturile disponibile sau transmite CV-ul tău.
 
 
-                form.custom-form(action='' method='')
+                form.custom-form(action='' method='')#careers-form
                     .form-box.form-box-left
                         label Nume
                         input(type='text' placeholder='Text here')
@@ -32,19 +32,19 @@ block content
                         input(type='text' placeholder='Text here')
                     .form-box.form-box-right
                         label E-mail
-                        input(type='email' placeholder='Text here')
+                        input(type='email' placeholder='Text here')#email
 
 
-                .form-title Atașează CV
-                form(action='/file-upload').dropzone
-                    //input(type='file')
-                    .dz-message
-                        img(src='/assets/img/drop.png')
-                        p Drag & Drop Your CV Here
-                        p or
-                        .btn-red select files
+                    .form-title Atașează CV
+                    div.dropzone
+                        //input(type='file')
+                        .dz-message
+                            img(src='/assets/img/drop.png')
+                            p Drag & Drop Your CV Here
+                            p or
+                            .btn-red select files
 
-                button.btn-red Aplica
+                    button(type='submit' id='careers-form-submit' ).btn-red Aplica
 
             .right
                 .about-box

@@ -11,6 +11,9 @@ Route.get('/about', [], (req, res, next) => {
 Route.get('/careers', [], (req, res, next) => {
 	return res.view('careers');
 });
+Route.get('/contact', [], (req, res, next) => {
+	return res.view('contact');
+});
 Route.get('/services', [], (req, res, next) => {
 	return res.view('services/index');
 });

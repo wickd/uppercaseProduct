@@ -1,0 +1,40 @@
+extends layout
+block content
+    .content.contact-box
+        #map
+        .container
+            .contact
+                .info-box
+                    strong Adresa:
+                    p MD-2005. Mun. Chişinău,
+                    p str. Buna Vestire 15/2, of. 3P
+                .info-box
+                    strong Telefon:
+                    p +/373 22/ 63 77 08
+                    p +/373 22/ 92 82 40
+                .info-box
+                    strong Fax:
+                    p +/373 22/ 63 77 06
+                .info-box
+                    strong E-mail:
+                    a(href='mailto:office@sarco.md' target='_blank') office@sarco.md
+
+                form(action='' method='').custom-form#contact-form
+                    .form-box
+                        label Nume si prenume
+                        input(type='text', placeholder='Text here')
+                    .form-box
+                        label Email
+                        input(type='email', placeholder='Text here')#contact-email
+                    .form-box
+                        label Subiect
+                        input(type='text', placeholder='Text here')
+                    .form-box
+                        label Mesaj
+                        textarea(placeholder='Text here')#message
+                        button(type='submit').form-submit#contact-form-submit Trimite
+
+
+
+block script
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjhgHvWxJb8ZvzyYmDviijsYzFqC2t3Qc&callback=initMap")
