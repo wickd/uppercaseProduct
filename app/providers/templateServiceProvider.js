@@ -5,6 +5,7 @@ let config = require('config').get('route')
 let c = require('config')
 let h = require(_namespace.app_path() + '/dashboard/administrator/helpers');
 let Option = require(_namespace.app_path() + '/Option');
+let Language = require(_namespace.app_path() + '/Language');
 let SettingsService = require(_namespace.app_path() + '/services/settingsService');
 let wrap = require('co').wrap;
 
@@ -68,7 +69,8 @@ class TemplateServiceProvider extends ServiceProvider
     * jadeLoader(req, res, next, view)
     {
         // ? provider 
-        // let options = yield (new Settings()).getPublic();
+        let options = yield (new Option()).getPublic();
+        let languages = yield (new Language()).getPublic();
 
         let _renderPug = (view, json = {}, status = null) => 
         {
@@ -79,7 +81,12 @@ class TemplateServiceProvider extends ServiceProvider
             //default pug config
             json.basedir = req.app.locals.basedir; 
             json.cache = config.cache;
-            // json.settings = (new SettingsService(options));
+            json.settings = (new SettingsService(options));
+            json.languages = languages;
+            json.translator = req.translator;
+            json.trans = (key, _default = '') => req.translator 
+                ? req.translator.trans(key, _default)
+                : _default;
 
             let viewData = h.object_merge(this.app().get('view'), json);
 

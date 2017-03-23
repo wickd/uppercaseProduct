@@ -9,6 +9,13 @@ let element =
         model : model,
         columns : {
             id : {},
+            background : {
+                output : row => row.cover('background')
+                    .then(att => att
+                        ? f.output_image(att, att => att.getFullPath(), {width: 170})
+                        : 'no-image'
+                    )
+            },  
             cover_image : {
                 output : row => row.cover('cover_image')
                     .then(att => att
@@ -26,6 +33,9 @@ let element =
             },
             active : {
                 output : row => f.output_boolean(row)
+            },    
+            show_in_slider : {
+                output : row => f.output_boolean(row, 'show_in_slider')
             }
         },
         actions : {},
@@ -36,6 +46,15 @@ let element =
                 type : 'select',
                 options : () => (new CategoriesRepository()).getPublic()
                     .then(categories => categories ? categories.list('name') : [])
+            },
+            background : {
+                type : "image",
+                multiple : false,
+                options : {
+                    dstPath : 'uploads/constructions',
+                    width : 1920,
+                    height : 1080
+                }
             },
             cover_image : {
                 type : "image",
@@ -65,6 +84,13 @@ let element =
             beneficiary : {
                 type : 'text',
                 translatable : true
+            },
+            show_in_slider : {
+                type : 'select',
+                options : {
+                    0 : 'No',
+                    1 : 'Yes'
+                }
             },
             active : {
                 type : 'select',

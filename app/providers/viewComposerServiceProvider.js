@@ -15,8 +15,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     compose(view)
     {
         view.nav_menu = this.app().get('navigation');
-
-        view.test = 10;
     }
 }
 

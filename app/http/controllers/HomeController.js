@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     * index(req, res, next)
     {
-        console.log(this.getAction());
+        // console.log(this.getAction());
 
     	return res.view('home');
     }
