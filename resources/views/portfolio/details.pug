@@ -3,8 +3,8 @@ block content
     .content
         .container
             .portfolio-left
-                h1  “Euroclinic”
-                p Instituția Medico-Sanitară Publică Spitalul raional Orhei, Centrul de tomografie computerizată, imagistică ”Euroclinic”
+                h1  !{item.present().renderName()}
+                p !{item.present().renderDescription('long_description', 0)}
                 img(src='/assets/img/tmp/5.jpg')
                 img(src='/assets/img/tmp/6.jpg')
                 img(src='/assets/img/tmp/7.jpg')
@@ -14,12 +14,12 @@ block content
                 .details
                     .info-box
                         strong Adresa:
-                        p or. Orhei
+                        p !{item.address}
                     .info-box
                         strong Descriere:
-                        p  Replanificarea încăperilor în Centru de tomografie
+                        p  !{item.present().renderDescription('description', 0)}
                     .info-box
                         strong Beneficiar:
-                        p  ”Euroclinic” SRL
+                        p  !{item.beneficiary}
 
-                    a(href='javascript:;').btn-back.go-back Înapoi
+                    a(href=route(`/portfolio/${category.slug}/constructions/`)).btn-back.go-back go back

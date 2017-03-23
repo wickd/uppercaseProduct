@@ -8,11 +8,11 @@ class Locale {
      *
      * @return void.
      */
-    constructor(language = null)
+    constructor(language = null, languages = null)
     {
         this.language = language;
 
-        this.languages = global.dashboard.get('languages');
+        this.languages = languages ? languages : global.dashboard.get('languages');
     }
 
     /**

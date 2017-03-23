@@ -463,3 +463,21 @@ exports.ensureExists =(fullPath, mask, cb) =>{
         } else cb(null); // successfully created folder
     });
 };
+
+/**
+ * Slugify text version 2.
+ * 
+ */
+exports.slug = (text = '') => {
+    if(text)
+    {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '_')           // Replace spaces with _ 'underscores'
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '_')         // Replace multiple - with single _
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+    }
+
+    return text;
+};

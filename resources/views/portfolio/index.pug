@@ -3,19 +3,7 @@ block content
     .content
         .container
             h1  Portfoliu
-            ol.portfolio
-                li
-                    a(href='/portfolio/list')
-                        h3  Construcții Industriale
-                        .img-box
-                            img(src='assets/img/slider/pag 1 Soroca.jpg')
-                        .slider-right
-                            button.btn-red vezi mai mult
-
-                li
-                    a(href='/portfolio/list')
-                        h3 Construcții Civile
-                        .img-box
-                            img(src='assets/img/slider/aeroport1.jpg')
-                        .slider-right
-                            button.btn-red vezi mai mult
+            if(categories)
+                ol.portfolio
+                    each category in categories
+                        include category_block

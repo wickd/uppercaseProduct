@@ -1,4 +1,5 @@
 let Controller = require('./Controller');
+let ConstructionsRepository = require(_namespace.app_path() + '/repositories/constructionsRepository');
 
 class HomeController extends Controller
 {
@@ -10,6 +11,7 @@ class HomeController extends Controller
     constructor()
     {
         super();
+        this.constructionsRepository = (new ConstructionsRepository());
     }
 
     /**
@@ -22,9 +24,9 @@ class HomeController extends Controller
      */
     * index(req, res, next)
     {
-        // console.log(this.getAction());
+        let constructions = yield this.constructionsRepository.getSliderPublic();
 
-    	return res.view('home');
+    	return res.view('home', { constructions : constructions });
     }
 }
 

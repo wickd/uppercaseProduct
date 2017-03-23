@@ -4,6 +4,7 @@ let pug = require('pug')
 let config = require('config').get('route')
 let c = require('config')
 let h = require(_namespace.app_path() + '/dashboard/administrator/helpers');
+let f = require(_namespace.app_path() + '/dashboard/administrator/helpers/functions');
 let Option = require(_namespace.app_path() + '/Option');
 let Language = require(_namespace.app_path() + '/Language');
 let SettingsService = require(_namespace.app_path() + '/services/settingsService');
@@ -84,9 +85,19 @@ class TemplateServiceProvider extends ServiceProvider
             json.settings = (new SettingsService(options));
             json.languages = languages;
             json.translator = req.translator;
+            json.slug = text => f.slug(text),
             json.trans = (key, _default = '') => req.translator 
                 ? req.translator.trans(key, _default)
                 : _default;
+            json.route = (url) => {
+
+                if(req.translator && url[0] == '/')
+                {
+                    return `/${req.translator.getLocale()}${url}`;
+                }
+
+                return url;
+            }
 
             let viewData = h.object_merge(this.app().get('view'), json);
 

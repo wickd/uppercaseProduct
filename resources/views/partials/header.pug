@@ -17,35 +17,13 @@ html(class="no-js" lang="")
             .container
                 .mobile-menu
                 if(languages && languages.count())
-                    //- include languages
+                    include languages
                 .left
                     a(href='/')
                         img(src='/assets/img/logo.png')
                 .right
                     .close-menu
-                    ul.menu
-                        li
-                            a(href='/about').active Despre noi
-                        li
-                            a(href='javascript:;').submenu Servicii
-                            ol
-                                li
-                                    a(href='/services') Pre-Construcție
-                                li
-                                    a(href='/services') Proiectare Construcție
-                                li
-                                    a(href='/services') Antrepriză Generală
-                                li
-                                    a(href='/services') Proiectare și Construcție
-                                li
-                                    a(href='/services') Construcții ASTRON
-                                li
-                                    a(href='/services') Servicii Reprezentare Proprietar
-                        li
-                            a(href='/portfolio') Portfoliu
-                        li
-                            a(href='/careers') Cariere
-                        li
-                            a(href='/contact') Contact
-
+                        
+                    if(nav_menu)
+                        include navigation_menu
         block content

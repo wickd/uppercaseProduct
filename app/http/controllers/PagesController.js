@@ -21,6 +21,26 @@ class PagesController extends Controller
     {
     	return res.view('about');
     }
+
+    /**
+     * Show services static page.
+     *
+     * @return {res} Response
+     */
+    * services(req, res, next)
+    {
+        return res.view('services/index');
+    }
+
+    /**
+     * Show contact static page.
+     *
+     * @return {res} Response
+     */
+    * contact(req, res, next)
+    {
+        return res.view('contact');
+    }
 }
 
 module.exports = PagesController;

@@ -43,8 +43,8 @@ class RouteServiceProvider extends ServiceProvider
         // Load web routes.
         this.app().getExpressApplicationInstance()
             // .use('/', [wrap(template)], wrap(baseRouter));
-            .use('/', wrap(web));
-            // .use('/:lang?/', [wrap(localization)], wrap(web));
+            // .use('/', wrap(web));
+            .use('/:lang?/', [wrap(localization)], wrap(web));
             // .use('/', [], wrap(web));
 
         // Load api routes.

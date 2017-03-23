@@ -1,5 +1,7 @@
 let Translator = require('translator/translator');
-const DEFAULT_LOCALE = 'en';
+let LanguagesRepository = require(_namespace.app_path() + '/repositories/languagesRepository');
+const DEFAULT_LOCALE = 'ro';
+let Locale = require(_namespace.app_path() + '/dashboard/translatable/locale');
 
 let exceptions = [
     'favicon.ico'
@@ -15,6 +17,20 @@ module.exports = function * (req, res, next) {
             return next();
         }
     }
+
+    let languages = yield (new LanguagesRepository()).getPublic();
+
+    let _default_language = languages ? languages.first() : null;
+
+    let _locale_language = languages ? languages.whereRow('slug', locale ? locale : req.session.lang) : null;
+
+    app.bind('languages', (app) => {
+        return languages;
+    })
+
+    app.bind('locale', (app) => {
+        return (new Locale(null, languages)).setLang(_locale_language);
+    })
 
     if(req.method != 'GET') 
     {
@@ -35,8 +51,8 @@ module.exports = function * (req, res, next) {
         req.session.lang = locale || req.session.lang;
 
     } else {
-
-        req.session.lang = req.session.lang || DEFAULT_LOCALE;    
+        req.session.lang = req.session.lang || _default_language 
+            ? _default_language.slug : DEFAULT_LOCALE;    
 
         if(! req.xhr)
         {

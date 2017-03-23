@@ -33,6 +33,16 @@ class ConstructionPresenter extends Presenter
 
         return '';
     }
+
+    /**
+     * Render construction name.
+     *
+     * @return {String}
+     */
+    renderName()
+    {
+        return this.helper().uc_first(this.model.name);
+    }
 }
 
 module.exports = ConstructionPresenter;
