@@ -53,7 +53,7 @@ router.post('/ajax/login',authController.ajaxLogin);
 // router.use(auth.midd);
 
 router.use('/api', require(_namespace.app_path() + '/administrator/api/router'));
-router.get('/', action('dashboard'));
+router.get('/', action('dashboard'), (req, res, next) => { return res.redirect('/pages/constructions'); });
 router.get('/pages/:page', [application, action('index')], controller.index);
 router.get('/pages/:page/:id/:action', [application, action()], controller.actions);
 router.post('/pages/:page/:id/save', [application, action('save'), upload.any(), updateRequest], controller.save);

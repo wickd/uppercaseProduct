@@ -1,9 +1,10 @@
 let Translatable = require(_namespace.app_path() + '/dashboard/translatable/translatable');
 let CategoryTranslation = require(_namespace.app_path() + '/CategoryTranslation');
 let HasActive = require(_namespace.app_path() + '/dashboard/libraries/mixins/hasActive');
+let HasAttachements = require(_namespace.app_path() + '/dashboard/libraries/mixins/hasAttachments');
 let Sluggable = require(_namespace.app_path() + '/dashboard/libraries/mixins/sluggify');
 
-class Category extends Sluggable(HasActive(Translatable))
+class Category extends HasAttachements(Sluggable(HasActive(Translatable)))
 {
     /**
      * Category constroctor

@@ -1,17 +1,9 @@
 {
-  "services": {
-    "icon": "fa fa-folder",
-    "title": "Services",
-    "pages": {
-      "services": {
-        "icon": "fa fa-circle-o",
-        "title": "Services"
-      },
-      "service_showcases": {
-        "icon": "fa fa-circle-o",
-        "title": "Service showcases"
-      }
-    }
+  "constructions" : {
+    "icon": "fa fa-circle-o"
+  },
+  "categories" : {
+    "icon": "fa fa-circle-o"
   },
   "career_requests" : {
     "icon": "fa fa-circle-o",
@@ -20,13 +12,7 @@
   "languages" : {
     "icon": "fa fa-circle-o"
   },
-  "categories" : {
-    "icon": "fa fa-circle-o"
-  },
   "positions" : {
-    "icon": "fa fa-circle-o"
-  },
-  "constructions" : {
     "icon": "fa fa-circle-o"
   },
   "contact_us" : {

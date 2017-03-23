@@ -20,7 +20,7 @@ class Construction extends HasAttachements(HasPresenter(Sluggable(HasActive(Tran
         this.table = 'constructions';
         this.translationModel = ConstructionTranslation;
         this.guarded = [ 'id' ];
-        this.fillable = [ 'id', 'category_id', 'slug', 'active' ];
+        this.fillable = [ 'id', 'category_id', 'slug', 'show_in_slider', 'active' ];
         this.translatedAttributes = [ 
             'name'
             ,'description'

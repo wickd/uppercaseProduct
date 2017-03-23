@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git@10.1.1.159:magrigoroae/sarco.git"
   },
-  "author": "",
+  "author": "ebs",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -48,6 +48,7 @@
     "pug": "^2.0.0-beta11",
     "slick-carousel": "^1.6.0",
     "squel": "^5.8.0",
+    "translator": "git+http://git.devebs.net/npm-packages/translator.git",
     "validatorjs": "^3.11.0"
   }
 }
