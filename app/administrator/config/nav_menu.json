@@ -18,5 +18,8 @@
   "contact_us" : {
     "icon" : "fa fa-circle-o",
     "title" : "Contact Us"
+  },
+  "services" : {
+    "icon" : "fa fa-circle-o"
   }
 }
