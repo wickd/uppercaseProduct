@@ -3,7 +3,7 @@ function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
-
+var body = $('body');
 $('document').ready(function () {
     $('#home-slider').slick({dots: true, arrows: false});
     $(".chosen-select").chosen({disable_search_threshold: 12});
@@ -72,25 +72,25 @@ $('document').ready(function () {
         }
 
     });
-    if ($('.details').length) {
+    if ($('.details').length && $(window).width() > 767) {
         $(window).on('scroll', function (e) {
             var top = 120;
             if ($(window).width() < 768) {
                 top = 65;
             }
             if ($(window).scrollTop() > top) {
-                $('body').addClass("fixed");
+                body.addClass("fixed");
             } else {
-                $('body').removeClass("fixed");
+                body.removeClass("fixed");
             }
         });
     }
-    $('body').on('click', '.mobile-menu', function () {
-        $('body').addClass('no-scroll');
+    body.on('click', '.mobile-menu', function () {
+        body.addClass('no-scroll');
         $('header .right').fadeIn();
     });
-    $('body').on('click', '.close-menu', function () {
-        $('body').removeClass('no-scroll');
+    body.on('click', '.close-menu', function () {
+        body.removeClass('no-scroll');
         $('header .right').fadeOut();
     });
     $(document).mouseup(function (e) {
@@ -99,12 +99,15 @@ $('document').ready(function () {
             if (!container.is(e.target) // if the target of the click isn't the container...
                 && container.has(e.target).length === 0) // ... nor a descendant of the container
             {
-                $('body').removeClass('no-scroll');
+                body.removeClass('no-scroll');
                 $('header .right').fadeOut();
             }
         }
 
 
+    });
+    body.on('click', '.go-back', function () {
+        window.history.back();
     });
 });
 function initMap() {
@@ -113,166 +116,7 @@ function initMap() {
         zoom: 10,
         center: uluru,
         disableDefaultUI: true,
-        styles: [
-            {
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#f5f5f5"
-                    }
-                ]
-            },
-            {
-                "elementType": "labels.icon",
-                "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#616161"
-                    }
-                ]
-            },
-            {
-                "elementType": "labels.text.stroke",
-                "stylers": [
-                    {
-                        "color": "#f5f5f5"
-                    }
-                ]
-            },
-            {
-                "featureType": "administrative.land_parcel",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#bdbdbd"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#eeeeee"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#757575"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi.park",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#e5e5e5"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi.park",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#9e9e9e"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#ffffff"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.arterial",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#757575"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#dadada"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.highway",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#616161"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.local",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#9e9e9e"
-                    }
-                ]
-            },
-            {
-                "featureType": "transit.line",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#e5e5e5"
-                    }
-                ]
-            },
-            {
-                "featureType": "transit.station",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#eeeeee"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#c9c9c9"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                    {
-                        "color": "#9e9e9e"
-                    }
-                ]
-            }
-        ]
+
     });
     var marker = new google.maps.Marker({
         position: uluru,

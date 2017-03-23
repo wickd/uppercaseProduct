@@ -202,12 +202,15 @@ Header
 }
 
 header {
-  padding: 30px 0;
+  padding: 20px 0;
   position: relative;
+  img {
+    max-width: 175px;
+  }
 }
 
 .menu {
-  margin: 23px 0;
+  margin: 33px 0;
 
   .has-submenu {
     &:after {
@@ -239,7 +242,7 @@ header {
       position: relative;
       a {
         color: #101010;
-        font: 14px 'titillium_websemibold';
+        font: 15px 'titillium_websemibold';
         text-transform: uppercase;
         border-bottom: 1px solid #dedede;
         display: block;
@@ -270,11 +273,12 @@ header {
     display: inline-block;
     margin: 0 0 0 20px;
     a {
+      position: relative;
       text-transform: uppercase;
       color: #3c3c3c;
       padding: 9px 10px 7px;
       border-bottom: 2px solid transparent;
-      font: 14px 'titillium_websemibold';
+      font: 16px 'titillium_websemibold';
       @include transition(0.2s ease);
       display: block;
       &:not(.active):hover {
@@ -379,6 +383,12 @@ Homepage
   @extend .middle-align;
 }
 
+.portfolio-list, .portfolio {
+  .slider-right {
+    float: right;
+  }
+}
+
 .btn-red {
   color: #fff;
   text-transform: uppercase;
@@ -478,9 +488,9 @@ About page
     line-height: 1;
   }
   p {
-    color: #3c3c3c;
-    font: 16px 'titillium_webregular';
-    margin: 0 0 10px;
+    color: #000;
+    font: 18px 'titillium_webregular';
+    margin: 0 0 15px;
   }
   ul {
     margin-bottom: 25px;
@@ -613,6 +623,7 @@ Portfolio
     float: left;
     list-style: none;
     a {
+      @extend %clear;
       display: block;
       background: #fff;
       padding: 25px;
@@ -672,6 +683,8 @@ Portfolio
       @extend .vertical-align;
       min-height: 100%;
       min-width: 100%;
+      max-height: 150%;
+      max-width: 150%;
     }
   }
 }
@@ -1191,7 +1204,7 @@ Contact
     position: static;
     @include transform(translate(0));
     float: right;
-    margin: 23px 0 23px 15px;
+    margin: 33px 0 23px 15px;
   }
   header {
     padding: 20px 0;
@@ -1245,8 +1258,14 @@ Contact
 }
 
 @media (max-width: 1279px) {
+  .menu > li a {
+    font-size: 15px;
+  }
   .slider-info {
     max-width: 500px;
+  }
+  header img {
+    max-width: 160px;
   }
   .content h1, .slider-info h2 {
     font-size: 42px;
@@ -1319,7 +1338,7 @@ Contact
 
 @media (max-width: 1023px) {
   header img {
-    max-width: 100px;
+    max-width: 130px;
     margin: 11px 0;
   }
   .menu > li a {
@@ -1341,7 +1360,7 @@ Contact
     right: 100%;
   }
   .lang {
-    margin: 23px 0 23px 5px;
+    margin: 33px 0 23px 5px;
   }
   .content h1, .slider-info h2 {
     font-size: 38px;
@@ -1474,7 +1493,7 @@ Contact
   }
   .menu ol li a {
     padding-left: 40px;
-    font: 16px 'titillium_webregular';
+    font: 14px 'titillium_webregular';
   }
   .close-menu {
     width: 30px;
@@ -1539,5 +1558,96 @@ Contact
     width: 48%;
     float: right;
   }
+  .content h1, .slider-info h2 {
+    font-size: 32px;
+  }
+  .menu > li:hover > ol {
+    display: inherit;
+  }
+}
 
+@media (max-width: 479px) {
+  .mobile-menu {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    left: 10px;
+  }
+  .lang a {
+    padding: 7px 5px;
+  }
+  header img {
+    max-width: 90px;
+    margin: 10px 0;
+  }
+  .content h1, .slider-info h2 {
+    font-size: 25px;
+  }
+  .slider-left, .slider-right {
+    width: 100%;
+    float: none;
+  }
+  .slider-left {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .slider-right {
+    text-align: center;
+  }
+  .slider-info h2 {
+    margin: 0 0 15px;
+    padding-bottom: 10px;
+  }
+  footer {
+    text-align: center;
+    font-size: 10px;
+    .left, .right {
+      float: none;
+    }
+  }
+  .portfolio li, .portfolio-list li {
+    float: none;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  .portfolio-list li:nth-child(2n) {
+    margin-left: 0;
+  }
+  .portfolio-left, .portfolio-right {
+    max-width: 100%;
+    width: 100%;
+    float: none;
+  }
+  .details {
+    padding-left: 0;
+  }
+  .btn-back {
+    margin: 15px 0 0;
+  }
+  .form-box.form-box-left, .form-box.form-box-right {
+    float: none;
+    width: 100%;
+  }
+  .dropzone .dz-message p {
+    font-size: 11px;
+  }
+  #careers-form-submit, #contact-form-submit {
+    width: 220px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    &:before, &:after {
+      content: none;
+    }
+  }
+  #contact-form-submit {
+    margin-top: 20px;
+  }
+  .contact .info-box {
+    float: none;
+    width: 100%;
+  }
+  .form-box label {
+    font-size: 11px;
+  }
 }
