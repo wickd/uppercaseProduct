@@ -6,25 +6,16 @@ block content
                 h1  Despre noi
                 p Competența de bază a SARCO o constituie capacitatea noastră de a construi și de a proiecta detaliat.
                 p Expertiza noastră în construcție este aplicabilă pentru un spectru larg de servicii de construcții, precum:
-                ul
-                    li
-                        a(href='javascript:;') Pre-Construcție
-                    li
-                        a(href='javascript:;') Proiectare Construcție
-                    li
-                        a(href='javascript:;') Antrepriză Generală
-                    li
-                        a(href='javascript:;') Proiectare și Construcție
-                    li
-                        a(href='javascript:;') Construcții ASTRON
-                    li
-                        a(href='javascript:;') Servicii Reprezentare Proprietar
+                if(services)
+                    ul
+                        each service in services
+                            li
+                                a(href=route(`/services/${service.slug}/`)) !{service.present().renderName()}
 
-
-                a(href='javascript:;').btn-red descarcă prezentarea companiei
+                a(href=`/uploads/docs/company_profile_${translator.getLocale()}.pdf` target="_blank").btn-red descarcă prezentarea companiei
 
             .right
                 .about-box
                     span
                     .about-img
-                        img(src='assets/img/about.jpg')
+                        img(src='/assets/img/about.jpg')

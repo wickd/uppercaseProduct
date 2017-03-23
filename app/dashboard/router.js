@@ -2,6 +2,8 @@ let mime = require('mime');
 let multer = require('multer');
 let router = require('express').Router();
 let config = require('config');
+let passport = require('passport');
+require(_namespace.config_path() + '/passport');
 let auth = require(_namespace.middlewares_path() + '/auth');
 let guest = require(_namespace.middlewares_path() + '/guest');
 let controller = require('./administrator/controller');
@@ -41,8 +43,14 @@ router.use(templatable);
  * + ----------------------------------------
  */
 router.get('/login', guest, action('get_login'), authController.login);
-router.post('/login', guest, action('post_login'),authController.attemptLogin);
+router.post('/login', guest, action('post_login'),     
+	passport.authenticate('local', {
+        successRedirect: '/dashboard/',
+        failureRedirect: '/dashboard/login'
+    }), authController.attemptLogin);
 router.post('/ajax/login',authController.ajaxLogin);
+
+// router.use('/*', auth);
 
 /* + ----------------------------------------
  * |    Dashboard routes.

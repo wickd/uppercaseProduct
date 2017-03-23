@@ -4,8 +4,7 @@ let defPath = './app/dashboard';
 
 // // default except routes.
 let exceptions = [
-    "/login",
-    "/test"
+    "/login"
 ];
 
 module.exports = (req, res, next, excp = null) => {

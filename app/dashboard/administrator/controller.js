@@ -470,6 +470,8 @@ exports.save = (req, res, next) => co(function*() {
                 let uploaded = req.files || {};
                 let files = controller.decoupleMediaFromData(fields, uploaded);
 
+                console.log(files);
+
                 // parse the editable fields init. by the form builder.
                 let data = {};
                 h.each(fields, field => {

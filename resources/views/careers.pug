@@ -9,42 +9,39 @@ block content
                 p Dacă iți dorești să faci parte din echipa noastră, aplică pentru unul dintre posturile disponibile sau transmite CV-ul tău.
 
 
-                form.custom-form(action='' method='')#careers-form
+                form.custom-form(action='' method='post' enctype="multipart/form-data")#careers-form
                     .form-box.form-box-left
                         label Nume
-                        input(type='text' placeholder='Text here')
+                        input(type='text' placeholder='Text here', name="firstname")
                     .form-box.form-box-right
                         label Post
-                        select.chosen-select(data-placeholder="Select")
-                            option
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
-                            option Post vacant
+                        select.chosen-select(data-placeholder="Select", name="position_id")
+                            option(value="")
+                            each post in positions
+                                option(value=post.id) !{post.present().renderName()}
 
                     .form-box.form-box-left
                         label Prenume
-                        input(type='text' placeholder='Text here')
+                        input(type='text' placeholder='Text here', name="lastname")
                     .form-box.form-box-right
                         label E-mail
-                        input(type='email' placeholder='Text here')#email
+                        input(type='email' placeholder='Text here', name="email")#email
 
 
                     .form-title Atașează CV
-                    div.dropzone
-                        //input(type='file')
-                        .dz-message
-                            img(src='/assets/img/drop.png')
-                            p Drag & Drop Your CV Here
-                            p or
-                            .btn-red select files
+                    a(href="javascript:;" class="btn-red" id="upload_cv") Select file
 
-                    button(type='submit' id='careers-form-submit' ).btn-red Aplica
+                    input(id="upload_cv_input" type='file', name="cv", multiple=false, style="display:none")
+                    //
+                        div.dropzone
+                            input(type='file', name="cv")
+                            .dz-message
+                                img(src='/assets/img/drop.png')
+                                p Drag & Drop Your CV Here
+                                p or
+                                .btn-red select file
+
+                    button(type='submit' id='careers-form-submit' style="float:right").btn-red Aplica
 
             .right
                 .about-box

@@ -5,4 +5,5 @@ div.main-slider
             h2  !{item.present().renderName()}
             .slider-left !{item.present().renderDescription('description', 0)}
             .slider-right
-                a(href='javascript:;').btn-red Vezi mai mult
+                - console.log(categories)
+                a(href=route(`/portfolio/${categories[item.id].slug}/constructions/${item.slug}/details`)).btn-red Vezi mai mult

@@ -1,4 +1,6 @@
 let ServiceProvider = require('./serviceProvider');
+let LocalStrategy = require('passport-local').Strategy;
+let AdminsRepository = require(_namespace.app_path() + '/repositories/adminsRepository.js');
 let passport = require('passport');
 
 class PassportAuthServiceProvider extends ServiceProvider
@@ -24,10 +26,35 @@ class PassportAuthServiceProvider extends ServiceProvider
             .use(passport.initialize());
         this.app().getExpressApplicationInstance()
             .use(passport.session());
-        this.app().getExpressApplicationInstance()
-            .use(this.app().getExpressApplicationInstance()
-                .static('public', {maxAge: parseInt(config.route.maxAge*1000)})
-            );
+            
+        passport.serializeUser((user, done) => {
+            done(null, user);
+        });
+
+        passport.deserializeUser((user, done) => {
+            done(null, user)
+        });
+
+        passport.use('local', new LocalStrategy({
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback : true
+        }, (req, email, password, done) => {
+            var deferred = Q.defer();
+
+            (new AdminsRepository()).getByCredentials(email, password)
+                .done(admin => {
+                    if (admin) {
+                        req.session.success = 'You are successfully logged in ' + admin.email + '!';
+                    } else {
+                        req.session.error = 'Could not log user in. Please try again.';
+                    }
+
+                    done(null, admin);
+                });
+
+            return deferred.promise;    
+        }));
     }
 
     /**
@@ -37,7 +64,7 @@ class PassportAuthServiceProvider extends ServiceProvider
      */
     boot()
     {
-        //
+        // require(_namespace.config_path() + "/passport");
     }
 }
 

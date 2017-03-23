@@ -9,6 +9,7 @@ let Option = require(_namespace.app_path() + '/Option');
 let Language = require(_namespace.app_path() + '/Language');
 let ServicesRepository = require(_namespace.app_path() + '/repositories/servicesRepository');
 let SettingsService = require(_namespace.app_path() + '/services/settingsService');
+let Locale = require(_namespace.app_path() + '/dashboard/translatable/locale')
 let wrap = require('co').wrap;
 let _ = require('lodash');
 
@@ -75,6 +76,18 @@ class TemplateServiceProvider extends ServiceProvider
         // ? provider 
         let options = yield (new Option()).getPublic();
         let languages = yield (new Language()).getPublic();
+        let locale = req.params.lang;
+
+        app.bind('languages', (app) => {
+            return languages;
+        })
+
+        let _locale_language = languages ? languages.whereRow('slug', locale ? locale : req.session.lang) : null;
+
+        app.bind('locale', (app) => {
+            return (new Locale(null, languages)).setLang(_locale_language);
+        })
+
         let services = yield this.servicesRepository.getPublic();
 
         let _renderPug = (view, json = {}, status = null) => 

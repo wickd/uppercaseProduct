@@ -2,12 +2,12 @@ let Repository = require('./repository');
 let Position = require(_namespace.app_path() + '/Position');
 let h = require('../dashboard/administrator/helpers');
 
-class CategoriesRepository extends Repository {
+class PositionsRepository extends Repository {
 
     /**
-     * CategoriesRepository constructor
+     * PositionsRepository constructor
      *
-     * @return {CategoriesRepository}
+     * @return {PositionsRepository}
      */
     constructor()
     {
@@ -51,4 +51,4 @@ class CategoriesRepository extends Repository {
     }
 }
 
-module.exports = CategoriesRepository;
+module.exports = PositionsRepository;

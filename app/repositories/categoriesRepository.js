@@ -49,6 +49,17 @@ class CategoriesRepository extends Repository {
             .where('active','=',1)
             .first()
     }
+
+    /**
+     * Get by id.
+     * 
+     */
+    getById(id)
+    {
+        return this.getModel()
+            .find(id)
+            .first();
+    }
 }
 
 module.exports = CategoriesRepository;

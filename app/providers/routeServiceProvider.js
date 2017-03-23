@@ -40,19 +40,15 @@ class RouteServiceProvider extends ServiceProvider
         this.app().getExpressApplicationInstance()
             .use(wrap(this.app().get('templater')));
 
-        // Load web routes.
         this.app().getExpressApplicationInstance()
-            // .use('/', [wrap(template)], wrap(baseRouter));
-            // .use('/', wrap(web));
-            .use('/:lang?/', [wrap(localization)], wrap(web));
-            // .use('/', [], wrap(web));
+            .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 
 
-        // Load api routes.
         this.app().getExpressApplicationInstance()
             .use('/api', [], wrap(api));
 
-		this.app().getExpressApplicationInstance()
-            .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 
+        // Load web routes.
+        this.app().getExpressApplicationInstance()
+            .use('/:lang?/', [wrap(localization)], wrap(web));
 	}
 }
 

@@ -14,6 +14,7 @@
   "author": "ebs",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "chosen-js": "^1.6.2",
     "clear": "0.0.1",
@@ -34,6 +35,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.1",
     "jquery": "^3.2.0",
+    "lodash": "^4.17.4",
+    "mime": "^1.3.4",
     "modernizr": "^3.4.0",
     "moment": "^2.18.0",
     "morgan": "^1.8.1",
@@ -42,13 +45,14 @@
     "node-sass": "^4.5.0",
     "normalize.css": "^5.0.0",
     "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pm2": "^2.4.2",
-    "presenter": "git+http://github.net/npmatichs/presenter.git",
+    "presenter": "git+ssh://git@10.1.1.159:npm-packages/presenter.git",
     "pug": "^2.0.0-beta11",
     "slick-carousel": "^1.6.0",
     "squel": "^5.8.0",
-    "translator": "git+http://sarco-node-updater:SarcoNode123@git.devebs.net/npm-packages/translator.git",
+    "translator": "git+ssh://git@10.1.1.159:npm-packages/translator.git",
     "validatorjs": "^3.11.0"
   }
 }

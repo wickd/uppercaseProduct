@@ -11,6 +11,7 @@ let TemplateServiceProvider = require(app_provider_path + 'templateServiceProvid
 let ServerServiceProvider = require(app_provider_path + 'serverServiceProvider');
 let AbortServiceProvider = require(app_provider_path + 'abortServiceProvider');
 let NavigationServiceProvider = require(app_provider_path + 'navigationServiceProvider');
+let PassportAuthServiceProvider = require(app_provider_path + 'passportAuthServiceProvider');
 
 module.exports = {
 
@@ -23,7 +24,7 @@ module.exports = {
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     */
-	name : "Ebs Creative",
+	name : "Sarco",
 
 	/*
     |--------------------------------------------------------------------------
@@ -63,6 +64,7 @@ module.exports = {
 	providers : [
 		AppServiceProvider,
         SessionServiceProvider,
+        PassportAuthServiceProvider,
         CompresionBodyParserServiceProvider,
         GeneratorsRejectionTracerServiceProvider,
         ViewComposerServiceProvider,

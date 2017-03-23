@@ -15,8 +15,8 @@ let Application = require('./libraries/foundation/application');
 global.appRoot = path.resolve(__dirname);
 // app.locals.basedir = defPath;
 
-express_app.use(passport.initialize());
-express_app.use(passport.session());
+// express_app.use(passport.initialize());
+// express_app.use(passport.session());
 express_app.use(express.static('public', {maxAge: parseInt(config.route.maxAge*1000)}));
 
 if(! global.__h)
@@ -32,6 +32,10 @@ if(! global._namespace)
 } else {
     console.log(`Unable to load namespaces, current value of global _namespace is ${_namespace}`);
 }
+
+// let bcrypt = require(_namespace.app_path() + '/dashboard/administrator/helpers/bcrypt');
+
+// console.log(bcrypt.hashSync('!test123'));
 
 if(! global.app)
 {

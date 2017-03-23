@@ -19,19 +19,19 @@ block content
                     strong E-mail:
                     a(href='mailto:office@sarco.md' target='_blank') office@sarco.md
 
-                form(action='' method='').custom-form#contact-form
+                form(method='post').custom-form#contact-form
                     .form-box
                         label Nume si prenume
-                        input(type='text', placeholder='Text here')
+                        input(type='text', placeholder='Text here', name="name")
                     .form-box
                         label Email
-                        input(type='email', placeholder='Text here')#contact-email
+                        input(type='email', placeholder='Text here', name="email")#contact-email
                     .form-box
                         label Subiect
-                        input(type='text', placeholder='Text here')
+                        input(type='text', placeholder='Text here', name="subject")
                     .form-box
                         label Mesaj
-                        textarea(placeholder='Text here')#message
+                        textarea(placeholder='Text here', name="message")#message
                         button(type='submit').form-submit#contact-form-submit Trimite
 
 

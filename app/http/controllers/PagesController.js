@@ -1,4 +1,5 @@
 let Controller = require('./Controller');
+let ContactsRepository = require(_namespace.app_path() + '/repositories/contactsRepository');
 
 class PagesController extends Controller
 {
@@ -10,6 +11,7 @@ class PagesController extends Controller
     constructor()
     {
         super();
+        this.contactsRepository = (new ContactsRepository());
     }
 
     /**
@@ -40,6 +42,18 @@ class PagesController extends Controller
     * contact(req, res, next)
     {
         return res.view('contact');
+    }
+
+    /**
+     * Save contact form.
+     *
+     * @return {res} Redirect
+     */
+    * postContact(req, res, next)
+    {
+        yield this.contactsRepository.create(req.body);
+   
+        return res.redirect('back');
     }
 }
 
