@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git@10.1.1.159:magrigoroae/sarco.git"
   },
-  "author": "",
+  "author": "ebs",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
