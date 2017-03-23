@@ -7,7 +7,9 @@ Route.get('/about', [], use('PagesController@about'));
 
 Route.get('/careers', [], use('CareersController@index'));
 
-Route.get('/services', [], use('PagesController@services'));
+// Route.get('/services', [], use('PagesController@services'));
+
+Route.get('/services/:slug?/', [], use('ServicesController@show'));
 
 Route.get('/contact', [], use('PagesController@contact'));
 

@@ -2,16 +2,9 @@ ul.menu
     each element in nav_menu
         li
             a(href=route('/' + element)).submenu !{trans(slug(element), element)}
-            ol
-                li
-                    a(href='/services') Pre-Construcție
-                li
-                    a(href='/services') Proiectare Construcție
-                li
-                    a(href='/services') Antrepriză Generală
-                li
-                    a(href='/services') Proiectare și Construcție
-                li
-                    a(href='/services') Construcții ASTRON
-                li
-                    a(href='/services') Servicii Reprezentare Proprietar
+            // todo: hardcoded
+            if(element == 'services' && ! _.isEmpty(services))
+                ol
+                    each service in services
+                        li
+                            a(href=route(`/services/${service.slug}/`)) !{service.present().renderName()}

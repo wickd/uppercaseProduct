@@ -3,35 +3,13 @@ block content
     .content
         .container.about-container
             .left
-                h1  Pre-Construcție
-                p Faza Pre-Construcție pune bazele unui proiect de succes, atunci când e realizată profesional.
-                p În timpul acestei faze există mai multe faze critice, cum ar fi planificarea, programarea, bugetarea, și decizii inginerești de valoare - toate acestea vor avea un impact semnificativ asupra construcțiilor.
-                p Serviciile SARCO sunt adaptate pentru a satisface nevoile și obiectivele proiectului individual. Prin lucrul cu proprietarul, prin următoarele activități, echipa SARCO este capabilă de a realiza cu succes și în mod constructiv obiectivele comune:
-                ul.no-color
-                    li
-                        a(href='javascript:;') Planificarea Construcției
-                    li
-                        a(href='javascript:;') Etapizare & Programare
-                    li
-                        a(href='javascript:;') Disponibilitatea costurilor pentru Sistemele Alternative
-                    li
-                        a(href='javascript:;') Mijloace & Metode generale de construcții
-                    li
-                        a(href='javascript:;') Bugetarea Construcției
-                    li
-                        a(href='javascript:;') Reduceri de Costuri
-                    li
-                        a(href='javascript:;') Mărimea & Domeniul Ofertei
-                    li
-                        a(href='javascript:;') Condițiile Generale ale Proiectului
-                    li
-                        a(href='javascript:;') Cerințe Speciale
-                    li
-                        a(href='javascript:;') Metode de Raportare
-                    li
-                        a(href='javascript:;') Estimare
-
-
+                h1  !{item.present().renderName()}
+                p !{item.present().renderDescription('description', 0)}
+                if(services)
+                    ul.no-color
+                        each service in services
+                            li
+                                a(href=route(`/services/${service.slug}/`)) !{service.present().renderName()}
 
             .right
                 .about-box

@@ -7,8 +7,10 @@ let h = require(_namespace.app_path() + '/dashboard/administrator/helpers');
 let f = require(_namespace.app_path() + '/dashboard/administrator/helpers/functions');
 let Option = require(_namespace.app_path() + '/Option');
 let Language = require(_namespace.app_path() + '/Language');
+let ServicesRepository = require(_namespace.app_path() + '/repositories/servicesRepository');
 let SettingsService = require(_namespace.app_path() + '/services/settingsService');
 let wrap = require('co').wrap;
+let _ = require('lodash');
 
 class TemplateServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,7 @@ class TemplateServiceProvider extends ServiceProvider
     constructor(app)
     {
         super(app);
+        this.servicesRepository = (new ServicesRepository());
     }
 
     /**
@@ -72,6 +75,7 @@ class TemplateServiceProvider extends ServiceProvider
         // ? provider 
         let options = yield (new Option()).getPublic();
         let languages = yield (new Language()).getPublic();
+        let services = yield this.servicesRepository.getPublic();
 
         let _renderPug = (view, json = {}, status = null) => 
         {
@@ -86,6 +90,8 @@ class TemplateServiceProvider extends ServiceProvider
             json.languages = languages;
             json.translator = req.translator;
             json.slug = text => f.slug(text),
+            json._ = _,
+            json.services = services,
             json.trans = (key, _default = '') => req.translator 
                 ? req.translator.trans(key, _default)
                 : _default;
