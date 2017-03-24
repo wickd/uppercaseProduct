@@ -4,7 +4,9 @@ const DEFAULT_LOCALE = 'ro';
 let Locale = require(_namespace.app_path() + '/dashboard/translatable/locale');
 
 let exceptions = [
-    'favicon.ico'
+    'favicon.ico',
+    'dashboard',
+    'uploads'
 ];
 
 module.exports = function * (req, res, next) {
@@ -22,7 +24,7 @@ module.exports = function * (req, res, next) {
 
     let _default_language = languages ? languages.first() : null;
 
-    let _locale_language = languages ? languages.whereRow('slug', locale ? locale : req.session.lang) : null;
+    let _locale_language = languages ? languages.whereRow('slug', locale) : null;
 
     app.bind('languages', (app) => {
         return languages;

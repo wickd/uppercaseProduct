@@ -37,18 +37,21 @@ class RouteServiceProvider extends ServiceProvider
 
         // this.app().bind('routes', (app) => []);
 
-        this.app().getExpressApplicationInstance()
-            .use(wrap(this.app().get('templater')));
+        // this.app().getExpressApplicationInstance()
+        //     .use(wrap(this.app().get('templater')));
 
         this.app().getExpressApplicationInstance()
             .use('/dashboard', require(_namespace.app_path() + '/dashboard/router')); 
 
         this.app().getExpressApplicationInstance()
-            .use('/api', [], wrap(api));
+            .use('/api', [wrap(this.app().get('templater'))], wrap(api));
 
         // Load web routes.
         this.app().getExpressApplicationInstance()
-            .use('/:lang?/', [wrap(localization)], wrap(web));
+            .use('/:lang?/', [
+                wrap(localization), 
+                wrap(this.app().get('templater'))
+            ], wrap(web));
 	}
 }
 

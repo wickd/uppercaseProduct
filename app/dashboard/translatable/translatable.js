@@ -27,7 +27,7 @@ class Translatable extends Repository {
     {
         if (! locale)
         {
-            let _app = global.dashboard || global.app;
+            let _app = global.app || global.dashboard;
 
             locale = _app.get('locale').id();
         }
@@ -222,7 +222,7 @@ class Translatable extends Repository {
      */
     getDefaultLanguageId()
     {
-        let _app = global.dashboard || global.app;
+        let _app = global.app || global.dashboard;
 
         if(_app.get('locale'))
         {
@@ -248,7 +248,7 @@ class Translatable extends Repository {
      */
     hasTranslation(locale = null)
     {
-        let _app = global.dashboard || global.app;
+        let _app = global.app || global.dashboard;
         let $locale = locale ? locale : _app.get('locale').id();
         let result = false;
 
@@ -323,7 +323,7 @@ class Translatable extends Repository {
      */
     getLocales()
     {
-        let _app = global.dashboard || global.app;
+        let _app = global.app || global.dashboard;
 
         let locales = _app.get('locale').ids();
 

@@ -73,20 +73,7 @@ class TemplateServiceProvider extends ServiceProvider
      */
     * jadeLoader(req, res, next, view)
     {
-        // ? provider 
         let options = yield (new Option()).getPublic();
-        let languages = yield (new Language()).getPublic();
-        let locale = req.params.lang;
-
-        app.bind('languages', (app) => {
-            return languages;
-        })
-
-        let _locale_language = languages ? languages.whereRow('slug', locale ? locale : req.session.lang) : null;
-
-        app.bind('locale', (app) => {
-            return (new Locale(null, languages)).setLang(_locale_language);
-        })
 
         let services = yield this.servicesRepository.getPublic();
 
@@ -100,7 +87,7 @@ class TemplateServiceProvider extends ServiceProvider
             json.basedir = req.app.locals.basedir; 
             json.cache = config.cache;
             json.settings = (new SettingsService(options));
-            json.languages = languages;
+            json.languages = app.get('languages');
             json.translator = req.translator;
             json.slug = text => f.slug(text),
             json._ = _,
