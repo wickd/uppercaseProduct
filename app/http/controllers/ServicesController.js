@@ -30,9 +30,18 @@ class ServicesController extends Controller
 
         if(services)
         {
+            let image = '';
+
             let service = slug ? services.whereRow('slug', slug) : services.first();
 
-            return res.view('services/index', { item : service });
+            let attachment = yield service.attachments('cover_image');
+
+            if(attachment && attachment.last())
+            {
+                image = attachment.last().present().renderPath();
+            }
+
+            return res.view('services/index', { item : service, image : image });
         }
 
         return res.view(404);

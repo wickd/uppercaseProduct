@@ -248,6 +248,15 @@ header {
         display: block;
         padding: 10px;
       }
+      span {
+        color: #101010;
+        font: 15px 'titillium_websemibold';
+        text-transform: uppercase;
+        border-bottom: 1px solid #dedede;
+        display: block;
+        padding: 10px;
+        cursor: pointer;
+      }
     }
   }
   > li {
@@ -281,6 +290,25 @@ header {
       font: 16px 'titillium_websemibold';
       @include transition(0.2s ease);
       display: block;
+      &:not(.active):hover {
+        border-bottom-color: #c22328;
+        background: #c22328;
+        color: #fff;
+      }
+      &.active {
+        border-bottom-color: #c22328;
+      }
+    }
+    span {
+      position: relative;
+      text-transform: uppercase;
+      color: #3c3c3c;
+      padding: 9px 10px 7px;
+      border-bottom: 2px solid transparent;
+      font: 16px 'titillium_websemibold';
+      @include transition(0.2s ease);
+      display: block;
+      cursor: pointer;
       &:not(.active):hover {
         border-bottom-color: #c22328;
         background: #c22328;

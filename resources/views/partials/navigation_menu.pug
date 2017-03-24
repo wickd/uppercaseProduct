@@ -1,7 +1,10 @@
 ul.menu
     each element in nav_menu
         li
-            a(href=route('/' + element)).submenu !{trans(slug(element), element)}
+            if element != 'services'
+                a(href=route('/' + element)).submenu !{trans(slug(element), element)}
+            else
+                span.submenu !{trans(slug(element), element)}
             // todo: hardcoded
             if(element == 'services' && ! _.isEmpty(services))
                 ol
