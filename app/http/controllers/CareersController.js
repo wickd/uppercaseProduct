@@ -3,7 +3,6 @@ let CareersRepository = require(_namespace.app_path() + '/repositories/careersRe
 let PositionsRepository = require(_namespace.app_path() + '/repositories/positionsRepository');
 let Upload = require(_namespace.app_path() + '/dashboard/administrator/helpers/upload');
 
-
 class CareersController extends Controller
 {
     /**
