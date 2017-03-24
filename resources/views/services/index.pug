@@ -3,8 +3,8 @@ block content
     .content
         .container.about-container
             .left
-                h1  !{item.present().renderName()}
-                p !{item.present().renderDescription('description', 0)}
+                h1  !{item ? item.present().renderName() : 'no services'}
+                p !{item ? item.present().renderDescription('description', 0) : 'no services'}
                 if(services)
                     ul.no-color
                         each service in services
