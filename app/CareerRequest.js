@@ -1,7 +1,7 @@
 let Repository = require(_namespace.app_path() + '/dashboard/administrator/repository');
 let HasAttachements = require(_namespace.app_path() + '/dashboard/libraries/mixins/hasAttachments');
 let HasActive = require(_namespace.app_path() + '/dashboard/libraries/mixins/hasActive');
-let Position = require(_namespace.app_path() + '/position');
+let Position = require(_namespace.app_path() + '/Position');
 // let Presenterable = require('presenter').mixin;
 
 class CareerRequest extends HasActive(HasAttachements(Repository))
