@@ -1,9 +1,8 @@
 div.main-slider
-    img(src='/assets/img/slider/1.jpg')
+    img(src=images[item.id])
     .container
         .slider-info
             h2  !{item.present().renderName()}
             .slider-left !{item.present().renderDescription('description', 0)}
             .slider-right
-                - console.log(categories)
                 a(href=route(`/portfolio/${categories[item.id].slug}/constructions/${item.slug}/details`)).btn-red Vezi mai mult

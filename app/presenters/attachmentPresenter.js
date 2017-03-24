@@ -29,7 +29,7 @@ class AttachmentPresenter extends Presenter
      */
     renderPath()
     {
-        return `${this.model.filepath}/${this.model.filename}`;
+        return `/${this.model.filepath}/${this.model.filename}`;
     }
 }
 

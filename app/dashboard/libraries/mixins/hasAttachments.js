@@ -17,7 +17,7 @@ module.exports = superclass => class extends superclass {
      */
     attachments(type=null)
     {
-        return (new Attachment()).getFiles(this.id, this.table,type);
+        return (new Attachment()).getFiles(this.id, this.table, type);
     }
 
     /**

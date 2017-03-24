@@ -1,6 +1,6 @@
 div(style="max-width:600px")
     if(element.hasAttached(element.getName()))
-        div(style="width: 100%")
+        div(style="width: 100%; min-width:600px")
             each item in element.getFiles(element.getName())
                 div.pull-left.m-r-lg.file-wrap(id='file-'+item.id, style="margin-bottom: 5px")
                     img(src=item.getFullPath() style='height:80px; width:100px')
