@@ -11,20 +11,7 @@ let app = express();
  * @returns {json} output
  */
 exports.login = (req, res) => {
-
     res.renderModule('views/auth/login', {});
-};
-
-/**
- * Attempt to login user.
- *
- * @param req
- * @param res
- * @returns {json} output
- */
-exports.attemptLogin = (req, res) => {
-    console.log('logged in');
-    res.redirect(301, '/dashboard');
 };
 
 exports.ajaxLogin = (req, res) => {
@@ -38,27 +25,22 @@ exports.ajaxLogin = (req, res) => {
 
 }
 
+/**
+ * Attempt to login user.
+ *
+ * @param req
+ * @param res
+ * @returns {json} output
+ */
 exports.attemptLogin = (req, res) => {
     console.log('logged in');
+
     res.redirect(301, '/dashboard');
 };
 
 exports.logout = (req, res) => {
 
     req.logout();
-return;
-    // set offline status
-    let user_id = req.session.user.id;
 
-    req.session.destroy(()=> {
-
-        (new User())
-            .setStatus(user_id, 0)
-            .then(user => {
-                res.clearCookie('connect.sid', {path: '/'});
-                res.redirect('/dashboard');
-            });
-
-    });
-
+    return res.redirect('dashboard');
 };

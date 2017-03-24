@@ -3,7 +3,8 @@ let multer = require('multer');
 let router = require('express').Router();
 let config = require('config');
 let passport = require('passport');
-require(_namespace.config_path() + '/passport');
+let b = require('bluebird')
+let LocalStrategy = require('passport-local').Strategy;
 let auth = require(_namespace.middlewares_path() + '/auth');
 let guest = require(_namespace.middlewares_path() + '/guest');
 let controller = require('./administrator/controller');
@@ -14,6 +15,28 @@ let templatable = require('./administrator/middlewares/template');
 let dashboardController = require('./controllers/dashboardController');
 let updateRequest = require('./administrator/middlewares/updateRequest');
 // let response = require('../administrator/api/libraries/apiResponse');
+let AdminsRepository = require(_namespace.app_path() + '/repositories/adminsRepository');
+
+passport.use('local', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback : true
+}, (req, email, password, done) => {
+    var deferred = b.defer();
+
+    (new AdminsRepository()).getByCredentials(email, password)
+        .done(admin => {
+            if (admin) {
+                req.session.success = 'You are successfully logged in ' + admin.email + '!';
+            } else {
+                req.session.error = 'Could not log user in. Please try again.';
+            }
+
+            done(null, admin);
+        });
+
+    return deferred.promise;    
+}));
 
 //file rename on upload
 let upload = multer({
@@ -43,14 +66,14 @@ router.use(templatable);
  * + ----------------------------------------
  */
 router.get('/login', guest, action('get_login'), authController.login);
-router.post('/login', guest, action('post_login'),     
+router.post('/login', guest, action('post_login'),
 	passport.authenticate('local', {
-        successRedirect: '/dashboard/',
+        successRedirect: '/dashboard/pages/constructions',
         failureRedirect: '/dashboard/login'
     }), authController.attemptLogin);
-router.post('/ajax/login',authController.ajaxLogin);
+router.post('/ajax/login', authController.ajaxLogin);
 
-// router.use('/*', auth);
+router.use('/*', auth);
 
 /* + ----------------------------------------
  * |    Dashboard routes.
