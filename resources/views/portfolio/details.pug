@@ -11,13 +11,13 @@ block content
             .portfolio-right
                 .details
                     .info-box
-                        strong Adresa:
+                        strong !{trans('address')}:
                         p !{item.address}
                     .info-box
-                        strong Descriere:
+                        strong !{trans('description')}:
                         p  !{item.present().renderDescription('description', 0)}
                     .info-box
-                        strong Beneficiar:
+                        strong !{trans('beneficiary')}:
                         p  !{item.beneficiary}
 
-                    a(href=route(`/portfolio/${category.slug}/constructions/`)).btn-back.go-back go back
+                    a(href=route(`/portfolio/${category.slug}/constructions/`)).btn-back.go-back !{trans('go_back')}

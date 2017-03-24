@@ -5,4 +5,4 @@ div.main-slider
             h2  !{item.present().renderName()}
             .slider-left !{item.present().renderDescription('description', 0)}
             .slider-right
-                a(href=route(`/portfolio/${categories[item.id].slug}/constructions/${item.slug}/details`)).btn-red Vezi mai mult
+                a(href=route(`/portfolio/${categories[item.id].slug}/constructions/${item.slug}/details`)).btn-red !{trans('see_more_btn')}

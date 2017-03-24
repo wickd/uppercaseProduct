@@ -7,4 +7,4 @@ ul.menu
                 ol
                     each service in services
                         li
-                            a(href=route(`/services/${service.slug}/`)) !{service.present().renderName()}
+                            a(href=route(`/services/${service.slug}/`)) !{trans(slug(service.present().renderName()), service.present().renderName())}

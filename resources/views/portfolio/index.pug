@@ -2,7 +2,7 @@ extends ../layout
 block content
     .content
         .container
-            h1  Portfoliu
+            h1  !{trans('portfolio').toUpperCase()}
             if(categories)
                 ol.portfolio
                     each category in categories

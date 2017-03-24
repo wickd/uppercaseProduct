@@ -3,33 +3,33 @@ block content
     .content
         .container.about-container
             .left
-                h1  Careers
-                p Încurajăm evoluţia profesională, recunoscând performanţa individuală şi propunând reale oportunităţi de carieră. Dacă deveniţi colegul nostru, vă dezvoltaţi constant competenţele pentru a evolua în meseria dumneavoastră.
-                p Echipa Sarco este foarte importantă pentru noi și vrem și o extindem cu noi colegi, capabili să ne susțină în demersul nostru de dezvoltare continuă.
-                p Dacă iți dorești să faci parte din echipa noastră, aplică pentru unul dintre posturile disponibile sau transmite CV-ul tău.
+                h1  !{trans('careers')}
+                p !{trans('careers_desc_01')}
+                p !{trans('careers_desc_02')}
+                p !{trans('careers_desc_03')}
 
 
                 form.custom-form(action='' method='post' enctype="multipart/form-data")#careers-form
                     .form-box.form-box-left
-                        label Nume
-                        input(type='text' placeholder='Text here', name="firstname")
+                        label !{trans('name')}
+                        input(type='text' placeholder=trans('type_text'), name="firstname")
                     .form-box.form-box-right
-                        label Post
-                        select.chosen-select(data-placeholder="Select", name="position_id")
+                        label !{trans('post')}
+                        select.chosen-select(data-placeholder=trans('select'), name="position_id")
                             option(value="")
                             each post in positions
                                 option(value=post.id) !{post.present().renderName()}
 
                     .form-box.form-box-left
-                        label Prenume
-                        input(type='text' placeholder='Text here', name="lastname")
+                        label !{trans('lastname')}
+                        input(type='text' placeholder=trans('type_text'), name="lastname")
                     .form-box.form-box-right
-                        label E-mail
-                        input(type='email' placeholder='Text here', name="email")#email
+                        label !{trans('email')}
+                        input(type='email' placeholder=trans('type_text'), name="email")#email
 
 
-                    .form-title Atașează CV
-                    a(href="javascript:;" class="btn-red" id="upload_cv") Select file
+                    .form-title !{trans('attach_cv')}
+                    a(href="javascript:;" class="btn-red" id="upload_cv") !{trans('select_file_btn')}
 
                     input(id="upload_cv_input" type='file', name="cv", multiple=false, style="display:none")
                     //
@@ -41,7 +41,7 @@ block content
                                 p or
                                 .btn-red select file
 
-                    button(type='submit' id='careers-form-submit' style="float:right").btn-red Aplica
+                    button(type='submit' id='careers-form-submit' style="float:right").btn-red !{trans('apply')}
 
             .right
                 .about-box

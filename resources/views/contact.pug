@@ -5,33 +5,33 @@ block content
         .container
             .contact
                 .info-box
-                    strong Adresa:
+                    strong !{trans('address')}:
                     p MD-2005. Mun. Chişinău,
                     p str. Buna Vestire 15/2, of. 3P
                 .info-box
-                    strong Telefon:
+                    strong !{trans('phone')}:
                     p +/373 22/ 63 77 08
                     p +/373 22/ 92 82 40
                 .info-box
-                    strong Fax:
+                    strong !{trans('fax')}:
                     p +/373 22/ 63 77 06
                 .info-box
-                    strong E-mail:
+                    strong !{trans('email')}:
                     a(href='mailto:office@sarco.md' target='_blank') office@sarco.md
 
                 form(method='post').custom-form#contact-form
                     .form-box
-                        label Nume si prenume
-                        input(type='text', placeholder='Text here', name="name")
+                        label !{trans('name_and_lastname')}
+                        input(type='text', placeholder=trans('type_text'), name="name")
                     .form-box
-                        label Email
-                        input(type='email', placeholder='Text here', name="email")#contact-email
+                        label !{trans('email')}
+                        input(type='email', placeholder=trans('type_text'), name="email")#contact-email
                     .form-box
-                        label Subiect
-                        input(type='text', placeholder='Text here', name="subject")
+                        label !{trans('subject')}
+                        input(type='text', placeholder=trans('type_text'), name="subject")
                     .form-box
-                        label Mesaj
-                        textarea(placeholder='Text here', name="message")#message
-                        button(type='submit').form-submit#contact-form-submit Trimite
+                        label !{trans('message')}
+                        textarea(placeholder=trans('type_text'), name="message")#message
+                        button(type='submit').form-submit#contact-form-submit !{trans('send')}
 
 
