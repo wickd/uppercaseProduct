@@ -1,0 +1,4 @@
+ul.no-color
+    each service in services
+        li
+            a(href=route(`/services/${service.slug}/`)) !{service.present().renderName()}

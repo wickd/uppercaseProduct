@@ -26,6 +26,28 @@ class ServicePresenter extends Presenter
         if(body)
         {
             let _text = this.helper()
+                .sprintf('%s', this.funcs().strip_html(body));
+
+            return length ? _text.substr(0, length) : _text;
+        }
+
+        return '';
+    }
+
+    /**
+     * Render short description
+     * 
+     * @param {string} field
+     * @param length {Number, '175'} Length of description.
+     * @return {String}
+     */
+    renderShortDescription(field, length = 175)
+    {
+        let body = this.model[field] ? this.model[field] : '';
+
+        if(body)
+        {
+            let _text = this.helper()
                 .sprintf('%s...', this.funcs().strip_html(body));
 
             return length ? _text.substr(0, length) : _text;

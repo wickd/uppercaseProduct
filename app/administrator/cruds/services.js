@@ -18,7 +18,7 @@ let element =
             slug : {},
             name : {},
             description : {
-                output : row => row.present().renderDescription('description')
+                output : row => row.present().renderShortDescription('description')
             },
             active : {
                 output : row => f.output_boolean(row)
