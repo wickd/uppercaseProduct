@@ -19,7 +19,7 @@ let element =
                 title : "CV",
                 output : row => row.cover('cv')
                     .then(att => att
-                        ? `<a href="/${att.present().renderPath()}" target="_blank">${att.present().original()}</a>`
+                        ? `<a href="${att.present().renderPath()}" target="_blank">${att.present().original()}</a>`
                         : 'no-cv'
                     )
             },

@@ -48,7 +48,8 @@ let server = function () {
 let nodemonjs = function () {
     return nodemon({
         script: script,
-        ignore: 'public/*'
+        ignore: 'public/*',
+        nodeArgs: ['--trace-warnings']
     }).on('restart', function () {
         clear();
         sass();

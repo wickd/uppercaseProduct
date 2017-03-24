@@ -12,21 +12,16 @@ module.exports = (controllerMethod) =>
 {
 	let [ controller, action ] = h.explode('@', controllerMethod);	
 
-	try
+	let _controller = classLoader(_namespace.controllers_path() + `/${controller}`);
+
+	if(_controller[action])
 	{
-		let _controller = classLoader(_namespace.controllers_path() + `/${controller}`);
+		// init controller data.
+		_controller._handleController(_controller, action);
 
-		if(_controller[action])
-		{
-			// init controller data.
-			_controller._handleController(_controller, action);
-
-			// wrap and save context of controller in action.
-			return wrap((req, res, next) => _controller[action](req, res, next));
-		}
-
-		throw new Error(`Undefined method ${action} in ${controller}.js`);
-	} catch (e) {
-		console.log(`Can\'t load controller ${controller}`);
+		// wrap and save context of controller in action.
+		return wrap((req, res, next) => _controller[action](req, res, next));
 	}
+
+	throw new Error(`Undefined method ${action} in ${controller}.js`);
 };

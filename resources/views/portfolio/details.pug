@@ -5,11 +5,9 @@ block content
             .portfolio-left
                 h1  !{item.present().renderName()}
                 p !{item.present().renderDescription('long_description', 0)}
-                img(src='/assets/img/tmp/5.jpg')
-                img(src='/assets/img/tmp/6.jpg')
-                img(src='/assets/img/tmp/7.jpg')
-                img(src='/assets/img/tmp/8.jpg')
-                img(src='/assets/img/tmp/9.jpg')
+                if(gallery)
+                    each image in gallery
+                        img(src=image)
             .portfolio-right
                 .details
                     .info-box

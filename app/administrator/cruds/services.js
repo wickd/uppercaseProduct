@@ -33,7 +33,7 @@ let element =
             },
             cover_image : {
                 type : "image",
-                multiple : true,
+                multiple : false,
                 options : {
                     dstPath : 'uploads/categories',
                     width : 1920,

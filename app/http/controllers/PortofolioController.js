@@ -24,9 +24,20 @@ class PortofolioController extends Controller
      */
     * index(req, res, next)
     {
+        let images = {};
         let categories = yield this.categoriesRepository.getPublic();
 
-    	return res.view('portfolio/index', { categories : categories });
+        if(categories)
+        {
+            for(let i = 0, _c = categories.count(); i < _c; i++)
+            {
+                let cover = yield categories[i].attachments('cover_image');
+
+                images[categories[i].getAttribute('id')] = cover ? cover.first().present().renderPath() : '';
+            }
+        }
+
+    	return res.view('portfolio/index', { categories : categories, images : images });
     }
 }
 

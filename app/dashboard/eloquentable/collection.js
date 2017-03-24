@@ -151,6 +151,23 @@ class Collection {
         return this[0] ? this[0] : null;
     }
 
+    last()
+    {
+        let count = this.count();
+
+        if(count)
+        {
+            if(count == 1)
+            {
+                return this.first();
+            }
+
+            return this[count - 1] ? this[count - 1] : null;
+        }
+
+        return null;
+    }
+
     /**
      * Check if collection is empty.
      *
