@@ -89,7 +89,9 @@ class Uploadable extends Element {
     {
         if(name && this.files instanceof Collection)
         {
-            return this.files.whereRow('type', name);
+            return this.isMultiple() 
+                ? this.files.where('type', name) 
+                : this.files.whereRow('type', name);
         }
 
         return this.files;
@@ -112,6 +114,15 @@ class Uploadable extends Element {
         }
     }
 
+    /**
+     * Check if file multiple.
+     *
+     * @return {Boolean}
+     */
+    isMultiple()
+    {
+        return !! this.attributes.multiple;
+    }
 }
 
 module.exports = Uploadable;

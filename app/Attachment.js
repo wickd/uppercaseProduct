@@ -1,10 +1,12 @@
 let Repository = require('./dashboard/administrator/repository');
+let HasPresenter = require('presenter').mixin;
+let AttachmentPresenter = require(_namespace.app_path() + '/presenters/attachmentPresenter');
 const DIRECTORY_SEPARATOR = '/';
 const GALLERY = 'gallery';
 
 let attachmentType = null;
 
-class Attachment extends Repository
+class Attachment extends HasPresenter(Repository)
 {
     /**
      * static properties
@@ -30,6 +32,7 @@ class Attachment extends Repository
         this.table = 'attachments';
         this.guarded = [ 'id' ];
         this.fillable = [ 'id', 'attachment_id', 'attachment_type', 'filepath', 'filename', 'original_name', 'mime', 'active', 'type' ];
+        this.presenter = AttachmentPresenter;
     }
 
 

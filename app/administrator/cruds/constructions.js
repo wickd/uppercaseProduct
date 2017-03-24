@@ -9,20 +9,13 @@ let element =
         model : model,
         columns : {
             id : {},
-            background : {
-                output : row => row.cover('background')
-                    .then(att => att
-                        ? f.output_image(att, att => att.getFullPath(), {width: 170})
-                        : 'no-image'
-                    )
-            },  
             cover_image : {
                 output : row => row.cover('cover_image')
                     .then(att => att
                         ? f.output_image(att, att => att.getFullPath(), {width: 170})
                         : 'no-image'
                     )
-            },  
+            },
             slug : {},
             name : {},
             description : {
@@ -47,7 +40,7 @@ let element =
                 options : () => (new CategoriesRepository()).getPublic()
                     .then(categories => categories ? categories.list('name') : [])
             },
-            background : {
+            cover_image : {
                 type : "image",
                 multiple : false,
                 options : {
@@ -56,7 +49,7 @@ let element =
                     height : 1080
                 }
             },
-            cover_image : {
+            gallery : {
                 type : "image",
                 multiple : true,
                 options : {

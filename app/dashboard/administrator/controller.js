@@ -1,5 +1,6 @@
 let q = require('q');
 let co = require('co');
+let _ = require('lodash');
 let c = require('./config');
 let h = require('./helpers');
 let f = require('./helpers/functions');
@@ -90,24 +91,39 @@ class Controller extends ControllerAbstract
      * @param fields
      * @return {*[]}
      */
-    decoupleMediaFromData(fields, Uploaded) {
-        let files = []; //, images = [];
-        h.each(fields, field => {
+    decoupleMediaFromData(fields, uploaded) {
+        let files = [];
 
+        h.each(fields, field => {
             if(field instanceof Uploadable && field.getName())
             {
-
                 let name = field.getName();
 
-                    let fieldUploaded = h.object_filter(Uploaded, (file) => {
+                let fieldUploaded = h.object_filter(uploaded, (file) => {
+                    if(! field.isMultiple())
+                    {
                         return name == file.fieldname;
-                    });
+                    }
+
+                    return true;
+                });
+
+                if(! field.isMultiple())
+                {
                     h.each(fieldUploaded, file => {
                         field.setAttachment(file);
                     });
 
-                files.push(field);
+                    files.push(field);
+                } else {
+                    _.each(fieldUploaded, file => {
+                        let _clone = _.clone(field);
 
+                        _clone.setAttachment(file);
+
+                        files.push(_clone);
+                    });
+                }
             }
         });
 
@@ -468,9 +484,8 @@ exports.save = (req, res, next) => co(function*() {
 
                 // decouple media datas.
                 let uploaded = req.files || {};
-                let files = controller.decoupleMediaFromData(fields, uploaded);
 
-                console.log(files);
+                let files = controller.decoupleMediaFromData(fields, uploaded);
 
                 // parse the editable fields init. by the form builder.
                 let data = {};

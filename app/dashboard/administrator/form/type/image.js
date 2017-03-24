@@ -20,7 +20,9 @@ class Image extends File {
      */
     renderInput()
     {
-         return f.view('form/type/templates/image.pug', { element: this });
+        return f.view(`form/type/templates/${this.isMultiple() ? 'image_multiple' : 'image'}.pug`, { 
+            element : this 
+        });
     }
 }
 

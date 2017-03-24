@@ -15,6 +15,14 @@ let element =
                 title : "Position",
                 output : row => row.position().then(post => post ? post.name : 'no-post')
             },
+            cv : {
+                title : "CV",
+                output : row => row.cover('cv')
+                    .then(att => att
+                        ? `<a href="/${att.present().renderPath()}" target="_blank">${att.present().original()}</a>`
+                        : 'no-cv'
+                    )
+            },
             active : {
                 output : row => f.output_boolean(row)
             }

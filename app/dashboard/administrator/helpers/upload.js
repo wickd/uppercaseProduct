@@ -41,6 +41,8 @@ class Upload {
         let attachment = file.getAttachment() || {};
         let options = file.options || {};
         this.settings = {};
+        this._file = file;
+        this._item = item;
 
         Object.assign(
             this.settings,
@@ -112,21 +114,21 @@ class Upload {
      * @param files
      * @returns {Array}
      */
-    static all(item, files) {
-
+    static all(item, files) 
+    {
         let funcs = [];
         let result = {};
 
         //if items and files are not empty
-        if (!h.is_undef(item) && !h.is_empty(files)) {
-
+        if (!h.is_undef(item) && !h.is_empty(files))
+        {
             //walk to each file
-            h.each(files, (file,key) => {
-
+            h.each(files, (file, key) => {
                 let attachment = file.getAttachment();
-                //if the item has atachement
-                if (!h.empty(attachment) && h.isset(attachment.originalname)) {
 
+                //if the item has atachement
+                if (!h.empty(attachment) && h.isset(attachment.originalname)) 
+                {
                     let upload = new Upload(item, file);
                     //parallel upload file
                     funcs
@@ -146,7 +148,6 @@ class Upload {
         }
 
         return [result, item];
-
     }
 
 //------------------private functions---------------------------------
@@ -208,7 +209,14 @@ class Upload {
      * save/update attachment to db
      * @param file
      */
-    _saveToDb() {
+    _saveToDb()
+    {
+        if(this._file.isMultiple())
+        {
+            return (new Attachment())
+                .create(this._getSettings())
+                .then((dbData) => dbData ? this.dstFile : null);
+        }
 
         return new Attachment()
             .updateOrCreate(this._getSettings(), ['id', 'attachment_id', 'attachment_type', 'type'])
